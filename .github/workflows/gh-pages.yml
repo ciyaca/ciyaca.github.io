@@ -18,8 +18,8 @@ jobs:
     # Grabbing custom dependencies and building as a pdf.
     - uses: ammaraskar/sphinx-action@master
       with:
-        pre-build-command: "apt-get update -y && apt-get install -y latexmk texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-xetex texlive-full fonts-freefont-otf"
-        build-command: "make latexpdf && ls -R"
+        pre-build-command: "apt-get update -y && apt-get install -y latexmk texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-xetex texlive-full fonts-freefont-otf && ls -R"
+        build-command: "make latexpdf"
         docs-folder: "./"
     # Create an artifact out of the previously built pdf.
     - uses: actions/upload-artifact@v1
