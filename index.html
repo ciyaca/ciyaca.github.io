@@ -1,0 +1,293 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+  <head>
+    <meta charset="utf-8" />
+    <title>Welcome to CIYACA-开发文档&#39;s documentation! &#8212; CIYACA 开发文档 1.0 文档</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="搜索" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="welcome-to-ciyaca-s-documentation">
+<h1>Welcome to CIYACA-开发文档's documentation!<a class="headerlink" href="#welcome-to-ciyaca-s-documentation" title="永久链接至标题">¶</a></h1>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="永久链接至标题">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+<div class="section" id="id1">
+<h1>简介<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<div class="section" id="ciyaca">
+<h2>CIYACA 是什么<a class="headerlink" href="#ciyaca" title="永久链接至标题">¶</a></h2>
+<p>..figure:: ./img/logo.png</p>
+<p>// REPO?</p>
+<p>CIYACA 是为北京理工大学《2020年春季Linux 系统编程》大作业而开发的聊天+ BBS 软件，
+包括服务端和客户端，均采用 C/CPP 实现。</p>
+</div>
+<div class="section" id="id2">
+<h2>为什么叫 CIYACA<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>CIYACA 采用递归的命名方式， <cite>CIYACA Is Yet Another Chat App</cite>。</p>
+</div>
+</div>
+<div class="section" id="id3">
+<h1>编译环境和使用方式<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h1>
+<div class="section" id="id4">
+<h2>编译环境<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+</div>
+<div class="section" id="id5">
+<h2>目录结构<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+</div>
+<div class="section" id="id6">
+<h2>使用方式<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
+</div>
+</div>
+<div class="section" id="id7">
+<h1>功能介绍<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h1>
+<div class="section" id="id8">
+<h2>基本功能<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h2>
+</div>
+<div class="section" id="id9">
+<h2>具体功能<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h2>
+</div>
+</div>
+<div class="section" id="id10">
+<h1>架构设计<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h1>
+<div class="section" id="id11">
+<h2>整体架构<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h2>
+</div>
+<div class="section" id="id12">
+<h2>模块设计<a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h2>
+<div class="section" id="feverrpc-ng">
+<h3>FeverRPC-ng<a class="headerlink" href="#feverrpc-ng" title="永久链接至标题">¶</a></h3>
+<p>FeverRPC-ng 是一个基于 Socket 长连接双向 RPC 框架。</p>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>FeverRPC-ng 为 FeverRPC 的重构版，FeverRPC 初版在大三上的时候完成的。</p>
+</div>
+<div class="section" id="id13">
+<h4>功能<a class="headerlink" href="#id13" title="永久链接至标题">¶</a></h4>
+<div class="section" id="id14">
+<h5>支持的功能<a class="headerlink" href="#id14" title="永久链接至标题">¶</a></h5>
+<ul class="simple">
+<li><p>使用TCP/Socket长连接</p></li>
+<li><p>双向RPC</p></li>
+<li><p>支持任意长度、类型参数绑定</p></li>
+<li><p>基于MsgPack，可自定义序列化类型</p></li>
+<li><p>Socket 支持任意大小传输功能 (不超过 int 表示范围的字节数)</p></li>
+<li><p>抛出异常</p></li>
+</ul>
+</div>
+<div class="section" id="id15">
+<h5>不支持的功能<a class="headerlink" href="#id15" title="永久链接至标题">¶</a></h5>
+<ul class="simple">
+<li><p>void返回值</p></li>
+<li><p>绑定非静态成员函数</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="id16">
+<h4>设计目标<a class="headerlink" href="#id16" title="永久链接至标题">¶</a></h4>
+<p>FeverRPC 的设计目标是解决 Socket 通信中客户端和服务端相互调用中的序列化问题。</p>
+<p>对于一般程序来说，传统的做法是使用序列化库，每增加一个接口，就需要增加相应的转换代码和序列化、反序列化代码。
+然而这对于程序开发显然是个重复而低效的过程，我们可以使用更抽象的方式完成这一功能。</p>
+<p>因此，FeverRPC 旨在为客户端和服务端提供如下的通信接口：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Client</span><span class="o">.</span><span class="n">cpp</span>
+
+<span class="c1">#include &quot;feverrpc.hpp&quot;</span>
+
+<span class="nb">int</span> <span class="n">main</span><span class="p">(){</span>
+    <span class="n">FeverRPC</span><span class="p">::</span><span class="n">Client</span> <span class="n">rpc</span><span class="p">(</span><span class="s2">&quot;127.0.0.1&quot;</span><span class="p">);</span>
+
+    <span class="o">//</span> <span class="n">调用远程的方法</span>
+    <span class="nb">int</span> <span class="n">ans</span> <span class="o">=</span> <span class="n">rpc</span><span class="o">.</span><span class="n">call</span><span class="o">&lt;</span><span class="nb">int</span><span class="o">&gt;</span><span class="p">(</span><span class="s2">&quot;add&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Server</span>
+
+<span class="c1">#include &quot;feverrpc.hpp&quot;</span>
+
+<span class="nb">int</span> <span class="n">add</span><span class="p">(</span><span class="nb">int</span> <span class="n">a</span><span class="p">,</span> <span class="nb">int</span> <span class="n">b</span><span class="p">,</span> <span class="nb">int</span> <span class="n">c</span><span class="p">){</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span> <span class="o">+</span> <span class="n">c</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nb">int</span> <span class="n">main</span><span class="p">(){</span>
+    <span class="n">FeverRPC</span><span class="p">::</span><span class="n">Server</span> <span class="n">rpc</span><span class="p">;</span>
+
+    <span class="o">//</span> <span class="n">绑定方法</span>
+    <span class="n">rpc</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;add&quot;</span><span class="p">,</span> <span class="n">add</span><span class="p">);</span>
+    <span class="o">//</span> <span class="n">监听调用</span>
+    <span class="n">rpc</span><span class="o">.</span><span class="n">c2s</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>可以见到，对于服务端和客户端来说，只需要将自己给对方提供的逻辑绑定，
+然后调用者就可以像使用普通函数调用一样，调用远程的逻辑。</p>
+<p>为了满足丰富的函数和变量类型，我们也需要提供 <strong>可变长</strong> 的参数调用。</p>
+</div>
+<div class="section" id="id17">
+<h4>模块架构<a class="headerlink" href="#id17" title="永久链接至标题">¶</a></h4>
+</div>
+<div class="section" id="id18">
+<h4>绑定-执行机制设计<a class="headerlink" href="#id18" title="永久链接至标题">¶</a></h4>
+</div>
+<div class="section" id="id19">
+<h4>任意类型不定长参数设计<a class="headerlink" href="#id19" title="永久链接至标题">¶</a></h4>
+</div>
+<div class="section" id="id20">
+<h4>任意长数据传送设计<a class="headerlink" href="#id20" title="永久链接至标题">¶</a></h4>
+</div>
+<div class="section" id="debug">
+<h4>Debug 与错误处理设计<a class="headerlink" href="#debug" title="永久链接至标题">¶</a></h4>
+</div>
+<div class="section" id="id21">
+<h4>双向调用设计<a class="headerlink" href="#id21" title="永久链接至标题">¶</a></h4>
+</div>
+<div class="section" id="id22">
+<h4>依赖<a class="headerlink" href="#id22" title="永久链接至标题">¶</a></h4>
+<div class="section" id="id23">
+<h5>运行依赖<a class="headerlink" href="#id23" title="永久链接至标题">¶</a></h5>
+<ul class="simple">
+<li><p>msgpack</p></li>
+<li><p>c++17 (因为使用了 <cite>std::apply</cite>)</p></li>
+<li><p>Linux 操作系统</p></li>
+</ul>
+</div>
+<div class="section" id="linux">
+<h5>涉及的 Linux 系统调用<a class="headerlink" href="#linux" title="永久链接至标题">¶</a></h5>
+</div>
+</div>
+<div class="section" id="id24">
+<h4>开发者注意事项<a class="headerlink" href="#id24" title="永久链接至标题">¶</a></h4>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>如果你是一名开发者，这里的内容需要你认真阅读。</p>
+</div>
+<div class="section" id="id25">
+<h5>为什么你需要它<a class="headerlink" href="#id25" title="永久链接至标题">¶</a></h5>
+<p>why should I use it
+你能获得的优势：</p>
+<p>在开发阶段，不在需要协商底层通信内容，只需要协商回调函数的接口（可以完全忽略网络传输的问题）。
+如果有新增的数据类型，不需要对底层的通信接口进行改动，只需要双方协商好字段和类型就可以。</p>
+</div>
+<div class="section" id="id26">
+<h5>解决双向调用的身份识别问题<a class="headerlink" href="#id26" title="永久链接至标题">¶</a></h5>
+<p>在使用双向的 RPC 中会遇到一个棘手的问题，就是在服务端作为 Caller 的代码没有办法知道对应的 Callee 是哪个。
+比如当设计即时通信的服务时，自己 bind 的代码被调用了以后，并不能分清楚要将消息发给哪些 RPC 的对端。</p>
+<p>在想了很长时间后我发现这个问题还是需要交给通信协议（交互逻辑）去实现。简单来说， 只要满足以下两条要求就可以获得足够的信息，保证双向调用不会遇到身份认证问题。</p>
+<ol class="arabic simple">
+<li><p>客户端除了 login，其他的方法必须首先传入能够标识唯一 ID 的参数信息。</p></li>
+<li><p>服务端在获得 S2C 的 RPC 连接后，会立刻调用 getID 来获取上一个要求中同样的 ID 信息。</p></li>
+</ol>
+<p>这样，在业务上足够完成身份的绑定，以便后续的操作。</p>
+</div>
+</div>
+<div class="section" id="id27">
+<h4>鸣谢<a class="headerlink" href="#id27" title="永久链接至标题">¶</a></h4>
+<p><a class="reference external" href="https://github.com/button-chen/buttonrpc_cpp14">https://github.com/button-chen/buttonrpc_cpp14</a>
+- 感谢 button-rpc 给予了我最关键的知识点
+- Blogs you can find on Google Search</p>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id28">
+<h1>分工和人员合作<a class="headerlink" href="#id28" title="永久链接至标题">¶</a></h1>
+<div class="section" id="id29">
+<h2>分工<a class="headerlink" href="#id29" title="永久链接至标题">¶</a></h2>
+</div>
+<div class="section" id="id30">
+<h2>合作<a class="headerlink" href="#id30" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id31">
+<h3>会议记录<a class="headerlink" href="#id31" title="永久链接至标题">¶</a></h3>
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="#">CIYACA 开发文档</a></h1>
+
+
+
+
+
+
+
+
+<h3>导航</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">快速搜索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="转向" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, CIYACA-group.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.4.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
