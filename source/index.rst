@@ -1,4 +1,4 @@
-Welcome to CIYACA-开发文档's documentation!
+CIYACA-开发文档
 ===========================================
 
 
@@ -17,7 +17,7 @@ Indices and tables
 CIYACA 是什么
 ------------------
 
-..figure:: ./img/logo.png
+..figure:: ./static/logo.png
 
 // REPO?
 
