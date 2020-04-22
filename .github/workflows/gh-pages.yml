@@ -25,7 +25,7 @@ jobs:
     - uses: actions/upload-artifact@v1
       with:
         name: Documentation
-        path: ./_build/latex/pdfexample.pdf
+        path: ./_build/latex/ciyaca.pdf
     # Publish built docs to gh-pages branch.
     # ===============================
     - name: Commit documentation changes
