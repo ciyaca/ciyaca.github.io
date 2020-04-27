@@ -17,7 +17,7 @@ Indices and tables
 CIYACA 是什么
 ------------------
 
-..figure:: ./static/logo.png
+..figure:: ./_static/logo.png
 
 // REPO?
 
