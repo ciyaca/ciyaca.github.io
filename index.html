@@ -51,33 +51,41 @@
 </div>
 </div>
 <div class="section" id="id4">
-<h2>编译环境和使用方式<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
-<div class="section" id="id5">
-<h3>编译环境<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
+<h2>特色与创新之处<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li><p>采用 Github 进行团队协作</p></li>
+<li><p>采用 Sphinx + reStructuredText 进行文档写作</p></li>
+<li><p>使用 RPC 的方式封装了底层通信，提供耦合度极低的双向调用方式</p></li>
+</ul>
 </div>
+<div class="section" id="id5">
+<h2>编译环境和使用方式<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
 <div class="section" id="id6">
-<h3>目录结构<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
+<h3>编译环境<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
 </div>
 <div class="section" id="id7">
-<h3>使用方式<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h3>
-</div>
+<h3>目录结构<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h3>
 </div>
 <div class="section" id="id8">
-<h2>功能介绍<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h2>
+<h3>使用方式<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h3>
+</div>
+</div>
 <div class="section" id="id9">
-<h3>基本功能<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h3>
-</div>
+<h2>功能介绍<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h2>
 <div class="section" id="id10">
-<h3>具体功能<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h3>
-</div>
+<h3>基本功能<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h3>
 </div>
 <div class="section" id="id11">
-<h2>架构设计<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h2>
-<div class="section" id="id12">
-<h3>整体架构<a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h3>
+<h3>具体功能<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h3>
 </div>
+</div>
+<div class="section" id="id12">
+<h2>架构设计<a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h2>
 <div class="section" id="id13">
-<h3>模块设计<a class="headerlink" href="#id13" title="永久链接至标题">¶</a></h3>
+<h3>整体架构<a class="headerlink" href="#id13" title="永久链接至标题">¶</a></h3>
+</div>
+<div class="section" id="id14">
+<h3>模块设计<a class="headerlink" href="#id14" title="永久链接至标题">¶</a></h3>
 <div class="section" id="feverrpc-ng">
 <h4>FeverRPC-ng<a class="headerlink" href="#feverrpc-ng" title="永久链接至标题">¶</a></h4>
 <p>FeverRPC-ng 是一个基于 Socket 长连接双向 RPC 框架。</p>
@@ -85,10 +93,10 @@
 <p class="admonition-title">注解</p>
 <p>FeverRPC-ng 为 FeverRPC 的重构版，FeverRPC 初版在大三上的时候完成的。</p>
 </div>
-<div class="section" id="id14">
-<h5>功能<a class="headerlink" href="#id14" title="永久链接至标题">¶</a></h5>
 <div class="section" id="id15">
-<h6>支持的功能<a class="headerlink" href="#id15" title="永久链接至标题">¶</a></h6>
+<h5>功能<a class="headerlink" href="#id15" title="永久链接至标题">¶</a></h5>
+<div class="section" id="id16">
+<h6>支持的功能<a class="headerlink" href="#id16" title="永久链接至标题">¶</a></h6>
 <ul class="simple">
 <li><p>使用TCP/Socket长连接</p></li>
 <li><p>双向RPC</p></li>
@@ -98,16 +106,16 @@
 <li><p>抛出异常</p></li>
 </ul>
 </div>
-<div class="section" id="id16">
-<h6>不支持的功能<a class="headerlink" href="#id16" title="永久链接至标题">¶</a></h6>
+<div class="section" id="id17">
+<h6>不支持的功能<a class="headerlink" href="#id17" title="永久链接至标题">¶</a></h6>
 <ul class="simple">
 <li><p>void返回值</p></li>
 <li><p>绑定非静态成员函数</p></li>
 </ul>
 </div>
 </div>
-<div class="section" id="id17">
-<h5>设计目标<a class="headerlink" href="#id17" title="永久链接至标题">¶</a></h5>
+<div class="section" id="id18">
+<h5>设计目标<a class="headerlink" href="#id18" title="永久链接至标题">¶</a></h5>
 <p>FeverRPC 的设计目标是解决 Socket 通信中客户端和服务端相互调用中的序列化问题。</p>
 <p>对于一般程序来说，传统的做法是使用序列化库，每增加一个接口，就需要增加相应的转换代码和序列化、反序列化代码。
 然而这对于程序开发显然是个重复而低效的过程，我们可以使用更抽象的方式完成这一功能。</p>
@@ -146,11 +154,11 @@
 然后调用者就可以像使用普通函数调用一样，调用远程的逻辑。</p>
 <p>为了满足丰富的函数和变量类型，我们也需要提供 <strong>可变长</strong> 的参数调用。</p>
 </div>
-<div class="section" id="id18">
-<h5>模块架构<a class="headerlink" href="#id18" title="永久链接至标题">¶</a></h5>
-<div class="figure align-default" id="id33">
+<div class="section" id="id19">
+<h5>模块架构<a class="headerlink" href="#id19" title="永久链接至标题">¶</a></h5>
+<div class="figure align-default" id="id35">
 <img alt="_images/FerverRPC_arch.png" src="_images/FerverRPC_arch.png" />
-<p class="caption"><span class="caption-text">FeverRPC 模块架构</span><a class="headerlink" href="#id33" title="永久链接至图片">¶</a></p>
+<p class="caption"><span class="caption-text">FeverRPC 模块架构</span><a class="headerlink" href="#id35" title="永久链接至图片">¶</a></p>
 </div>
 <dl class="field-list">
 <dt class="field-odd">FeverRPC::FeverRPC</dt>
@@ -181,15 +189,15 @@
 </dd>
 </dl>
 </div>
-<div class="section" id="id19">
-<h5>绑定-执行机制设计<a class="headerlink" href="#id19" title="永久链接至标题">¶</a></h5>
+<div class="section" id="id20">
+<h5>绑定-执行机制设计<a class="headerlink" href="#id20" title="永久链接至标题">¶</a></h5>
 <p>RPC 通信需要双方首先绑定可以使用的函数，然后延迟调用。
 简单来说，就是使用一个类似 <cite>map&lt;String, Function&gt;</cite> 的映射来
 存储这些函数。</p>
 <p>在执行的时候，使用根据相应的名称从这个映射中取出函数，并传入参数执行就可以了。</p>
 </div>
-<div class="section" id="id20">
-<h5>任意类型不定长参数设计<a class="headerlink" href="#id20" title="永久链接至标题">¶</a></h5>
+<div class="section" id="id21">
+<h5>任意类型不定长参数设计<a class="headerlink" href="#id21" title="永久链接至标题">¶</a></h5>
 <p>如果仅仅需要绑定和执行，直接使用强制类型转换将函数参数统一成 <cite>void *</cite> 的方式就行了。
 但是我们有一个问题出现了，在双方通信时，变量的类型是无法传递的。如果采用 <cite>void *</cite> 的方式
 只能由上层代码将类型强制转换成需要的类型——这样增加了上层代码的工作。</p>
@@ -202,8 +210,8 @@
 <p>具体的代码比较长，详见源码。</p>
 </div>
 </div>
-<div class="section" id="id21">
-<h5>任意长数据传送设计<a class="headerlink" href="#id21" title="永久链接至标题">¶</a></h5>
+<div class="section" id="id22">
+<h5>任意长数据传送设计<a class="headerlink" href="#id22" title="永久链接至标题">¶</a></h5>
 <p>为了传输不定长的数据，我们需要对于每一个发送的数据，首先传送数据大小，然后按照 1024 字节
 分块传送数据。接收端也按照同样的逻辑接受。</p>
 </div>
@@ -226,13 +234,27 @@
 <p>这样当我们在 make 的时候传入 <cite>-DDEBUG</cite> flag，就能编译出打印调试信息的代码，
 并且每个输出都有文件名、行号、函数名。</p>
 </div>
-<div class="section" id="id22">
-<h5>双向调用设计<a class="headerlink" href="#id22" title="永久链接至标题">¶</a></h5>
-</div>
 <div class="section" id="id23">
-<h5>依赖<a class="headerlink" href="#id23" title="永久链接至标题">¶</a></h5>
+<h5>双向调用设计<a class="headerlink" href="#id23" title="永久链接至标题">¶</a></h5>
+<p>为了满足交互需求，RPC 不仅仅需要类似 HTTP 的单向无状态请求的方式；还需要提供
+从服务端调用客户端的能力（并且在此之上保证能够记忆客户端的身份）。</p>
+<p>经管对于 Socket 协议来说，这一切是很好实现的，但是不要忘记我们将 Socket 完全封装了。
+因此，上层代码在编译期是无法提前知道这个 RPC 和哪个客户端对应。</p>
+<dl class="field-list simple">
+<dt class="field-odd">双向调用</dt>
+<dd class="field-odd"><p>这需要采用两个 Socket 进行通信，分别负责客户端主动发起的调用和服务端主动发起的调用。
+当然，如果采用异步 IO 也可以使用一个 Socket 解决，但是这样需要严格设计消息缓冲的序列，
+会增加较大的工作量、增加调试难度。</p>
+</dd>
+<dt class="field-even">有状态的服务</dt>
+<dd class="field-even"><p>详见 // TODO：链接</p>
+</dd>
+</dl>
+</div>
 <div class="section" id="id24">
-<h6>运行依赖<a class="headerlink" href="#id24" title="永久链接至标题">¶</a></h6>
+<h5>依赖<a class="headerlink" href="#id24" title="永久链接至标题">¶</a></h5>
+<div class="section" id="id25">
+<h6>运行依赖<a class="headerlink" href="#id25" title="永久链接至标题">¶</a></h6>
 <ul class="simple">
 <li><p>msgpack</p></li>
 <li><p>c++17 (因为使用了 <cite>std::apply</cite>)</p></li>
@@ -243,21 +265,21 @@
 <h6>涉及的 Linux 系统调用<a class="headerlink" href="#linux" title="永久链接至标题">¶</a></h6>
 </div>
 </div>
-<div class="section" id="id25">
-<h5>开发者注意事项<a class="headerlink" href="#id25" title="永久链接至标题">¶</a></h5>
+<div class="section" id="id26">
+<h5>开发者注意事项<a class="headerlink" href="#id26" title="永久链接至标题">¶</a></h5>
 <div class="admonition warning">
 <p class="admonition-title">警告</p>
 <p>如果你是一名开发者，这里的内容需要你认真阅读。</p>
 </div>
-<div class="section" id="id26">
-<h6>为什么你需要它<a class="headerlink" href="#id26" title="永久链接至标题">¶</a></h6>
+<div class="section" id="id27">
+<h6>为什么你需要它<a class="headerlink" href="#id27" title="永久链接至标题">¶</a></h6>
 <p>why should I use it
 你能获得的优势：</p>
 <p>在开发阶段，不在需要协商底层通信内容，只需要协商回调函数的接口（可以完全忽略网络传输的问题）。
 如果有新增的数据类型，不需要对底层的通信接口进行改动，只需要双方协商好字段和类型就可以。</p>
 </div>
-<div class="section" id="id27">
-<h6>解决双向调用的身份识别问题<a class="headerlink" href="#id27" title="永久链接至标题">¶</a></h6>
+<div class="section" id="id28">
+<h6>解决双向调用的身份识别问题<a class="headerlink" href="#id28" title="永久链接至标题">¶</a></h6>
 <p>在使用双向的 RPC 中会遇到一个棘手的问题，就是在服务端作为 Caller 的代码没有办法知道对应的 Callee 是哪个。
 比如当设计即时通信的服务时，自己 bind 的代码被调用了以后，并不能分清楚要将消息发给哪些 RPC 的对端。</p>
 <p>在想了很长时间后我发现这个问题还是需要交给通信协议（交互逻辑）去实现。简单来说， 只要满足以下两条要求就可以获得足够的信息，保证双向调用不会遇到身份认证问题。</p>
@@ -268,8 +290,8 @@
 <p>这样，在业务上足够完成身份的绑定，以便后续的操作。</p>
 </div>
 </div>
-<div class="section" id="id28">
-<h5>鸣谢<a class="headerlink" href="#id28" title="永久链接至标题">¶</a></h5>
+<div class="section" id="id29">
+<h5>鸣谢<a class="headerlink" href="#id29" title="永久链接至标题">¶</a></h5>
 <p><a class="reference external" href="https://github.com/button-chen/buttonrpc_cpp14">https://github.com/button-chen/buttonrpc_cpp14</a>
 - 感谢 button-rpc 给予了我最关键的知识点
 - Blogs you can find on Google Search</p>
@@ -277,15 +299,18 @@
 </div>
 </div>
 </div>
-<div class="section" id="id29">
-<h2>分工和人员合作<a class="headerlink" href="#id29" title="永久链接至标题">¶</a></h2>
 <div class="section" id="id30">
-<h3>分工<a class="headerlink" href="#id30" title="永久链接至标题">¶</a></h3>
+<h2>困难与解决办法<a class="headerlink" href="#id30" title="永久链接至标题">¶</a></h2>
 </div>
 <div class="section" id="id31">
-<h3>合作<a class="headerlink" href="#id31" title="永久链接至标题">¶</a></h3>
+<h2>分工和人员合作<a class="headerlink" href="#id31" title="永久链接至标题">¶</a></h2>
 <div class="section" id="id32">
-<h4>会议记录<a class="headerlink" href="#id32" title="永久链接至标题">¶</a></h4>
+<h3>分工<a class="headerlink" href="#id32" title="永久链接至标题">¶</a></h3>
+</div>
+<div class="section" id="id33">
+<h3>合作<a class="headerlink" href="#id33" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id34">
+<h4>会议记录<a class="headerlink" href="#id34" title="永久链接至标题">¶</a></h4>
 </div>
 </div>
 </div>
