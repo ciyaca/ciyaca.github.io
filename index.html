@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <title>CIYACA-开发文档 &#8212; CIYACA 开发文档 1.0 文档</title>
-    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -13,21 +13,130 @@
     <script src="_static/doctools.js"></script>
     <script src="_static/language_data.js"></script>
     <link rel="index" title="索引" href="genindex.html" />
-    <link rel="search" title="搜索" href="search.html" />
-   
-  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
-
+    <link rel="search" title="搜索" href="search.html" /> 
   </head><body>
-  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>导航</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="总目录"
+             accesskey="I">索引</a></li>
+        <li class="nav-item nav-item-0"><a href="#">CIYACA 开发文档 1.0 文档</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="#">目录</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">CIYACA-开发文档</a><ul>
+<li><a class="reference internal" href="#id1">简介</a><ul>
+<li><a class="reference internal" href="#id2">CIYACA 是什么</a></li>
+<li><a class="reference internal" href="#id3">为什么叫 CIYACA</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id4">特色与创新之处</a></li>
+<li><a class="reference internal" href="#id5">编译环境和使用方式</a><ul>
+<li><a class="reference internal" href="#id6">编译环境</a></li>
+<li><a class="reference internal" href="#id7">目录结构</a></li>
+<li><a class="reference internal" href="#id8">使用方式</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id9">功能介绍</a><ul>
+<li><a class="reference internal" href="#id10">基本功能</a></li>
+<li><a class="reference internal" href="#id11">具体功能</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id12">架构设计</a><ul>
+<li><a class="reference internal" href="#id13">整体架构</a></li>
+<li><a class="reference internal" href="#id14">模块设计</a><ul>
+<li><a class="reference internal" href="#feverrpc-ng">网络通信 —— FeverRPC-ng</a><ul>
+<li><a class="reference internal" href="#id15">功能</a><ul>
+<li><a class="reference internal" href="#id16">支持的功能</a></li>
+<li><a class="reference internal" href="#id17">不支持的功能</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id18">设计目标</a></li>
+<li><a class="reference internal" href="#id19">模块架构</a></li>
+<li><a class="reference internal" href="#id20">绑定-执行机制设计</a></li>
+<li><a class="reference internal" href="#id21">任意类型不定长参数设计</a></li>
+<li><a class="reference internal" href="#id22">任意长数据传送设计</a></li>
+<li><a class="reference internal" href="#debug">Debug 与错误处理设计</a></li>
+<li><a class="reference internal" href="#id23">双向调用设计</a></li>
+<li><a class="reference internal" href="#id24">依赖</a><ul>
+<li><a class="reference internal" href="#id25">运行依赖</a></li>
+<li><a class="reference internal" href="#linux">涉及的 Linux 系统调用</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id26">开发者注意事项</a><ul>
+<li><a class="reference internal" href="#id27">为什么你需要它</a></li>
+<li><a class="reference internal" href="#id28">解决双向调用的身份识别问题</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id29">鸣谢</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id30">数据库的设计与建立</a><ul>
+<li><a class="reference internal" href="#user">User 表</a></li>
+<li><a class="reference internal" href="#single-chat-info">single_chat_info表</a></li>
+<li><a class="reference internal" href="#single-chat-history">single_chat_history表</a></li>
+<li><a class="reference internal" href="#group-chat-info">group_chat_info表</a></li>
+<li><a class="reference internal" href="#group-chat-history">group_chat_history表</a></li>
+<li><a class="reference internal" href="#group-chat-management">group_chat_management表</a></li>
+<li><a class="reference internal" href="#friend-apply">friend_apply表</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id31">困难与解决办法</a><ul>
+<li><a class="reference internal" href="#rpc">解决双向 RPC 设计中可变长模板参数的设计</a><ul>
+<li><a class="reference internal" href="#id32">难点</a></li>
+<li><a class="reference internal" href="#id33">解决方法</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id34">解决双向 RPC 调用中身份认证的问题</a><ul>
+<li><a class="reference internal" href="#id35">难点</a></li>
+<li><a class="reference internal" href="#id36">解决方法</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id37">分工和人员合作</a><ul>
+<li><a class="reference internal" href="#id38">分工</a></li>
+<li><a class="reference internal" href="#id39">合作</a><ul>
+<li><a class="reference internal" href="#id40">会议记录</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <div role="note" aria-label="source link">
+    <h3>本页</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/index.rst.txt"
+            rel="nofollow">显示源代码</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">快速搜索</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="转向" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          
-
           <div class="body" role="main">
             
   <div class="section" id="ciyaca">
@@ -420,70 +529,22 @@
 
 
           </div>
-          
-        </div>
-      </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-<p class="logo">
-  <a href="#">
-    <img class="logo" src="_static/logo.png" alt="Logo"/>
-    
-  </a>
-</p>
-
-
-
-
-
-
-
-
-<h3>导航</h3>
-
-<div class="relations">
-<h3>Related Topics</h3>
-<ul>
-  <li><a href="#">Documentation overview</a><ul>
-  </ul></li>
-</ul>
-</div>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">快速搜索</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
-      <input type="submit" value="转向" />
-    </form>
-    </div>
-</div>
-<script>$('#searchbox').show(0);</script>
-
-
-
-
-
-
-
-
         </div>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="footer">
-      &copy;2020, CIYACA-group.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.4.4</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
-      
-      |
-      <a href="_sources/index.rst.txt"
-          rel="nofollow">Page source</a>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>导航</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="总目录"
+             >索引</a></li>
+        <li class="nav-item nav-item-0"><a href="#">CIYACA 开发文档 1.0 文档</a> &#187;</li> 
+      </ul>
     </div>
-
-    
-
-    
+    <div class="footer" role="contentinfo">
+        &#169; 版权所有 2020, CIYACA-group.
+      由 <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4 创建。
+    </div>
   </body>
 </html>
