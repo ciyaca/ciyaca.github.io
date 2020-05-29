@@ -162,8 +162,10 @@
 <div class="section" id="id4">
 <h2>特色与创新之处<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
 <ul class="simple">
+<li><p>专门设计了 Logo、名称</p></li>
 <li><p>采用 Github 进行团队协作</p></li>
 <li><p>采用 Sphinx + reStructuredText 进行文档写作</p></li>
+<li><p>采用石墨文档进行共享编辑、整理前期内容</p></li>
 <li><p>使用 RPC 的方式封装了底层通信，提供耦合度极低的双向调用方式</p></li>
 </ul>
 </div>
@@ -505,11 +507,25 @@
 <h3>解决双向 RPC 调用中身份认证的问题<a class="headerlink" href="#id34" title="永久链接至标题">¶</a></h3>
 <div class="section" id="id35">
 <h4>难点<a class="headerlink" href="#id35" title="永久链接至标题">¶</a></h4>
-<p>这版 FeverRPC-ng 是基于大三上完成的初版的进一步重构。在大三上完成整体设计的时候，
-我们把</p>
+<p>这版 FeverRPC-ng 是基于大三上完成的初版的进一步重构。在我大三上完成整体设计的时候，
+就已经因为这个问题十分头痛。</p>
+<p>身份认证的问题是这样的：RPC 调用依赖实现注册的函数，服务端和客户端相互调用属于两个线程。
+而如果想在服务端绑定的函数中调用某个具体的 Server to Client 的 RPC 句柄，就会遇到无法确认
+具体是哪个句柄的问题。</p>
+<p>最初为了解决这个问题。我曾经试图把认证逻辑封装在了 RPC 之中，但是实事证明这样限制了灵活度，
+也让 RPC 承担了更复杂而多余的逻辑功能。</p>
 </div>
 <div class="section" id="id36">
 <h4>解决方法<a class="headerlink" href="#id36" title="永久链接至标题">¶</a></h4>
+<p>既然代码层面不好约束，在很长时间思考以后，我最终选择了从协议层面入手。</p>
+<p>也就是说使用这个 RPC 的上层代码要满足以下的协议要求：</p>
+<ol class="arabic simple">
+<li><p>客户端除了 login，其他的方法必须首先传入能够标识唯一 ID 的参数信息。</p></li>
+<li><p>服务端在获得 S2C 的 RPC 连接后，会立刻调用 getID 来获取上一个要求中同样的 ID 信息。</p></li>
+</ol>
+<p>这样能够保证，首先建立连接的时候服务端就能将句柄和 ID 一一对应，然后在之后的通讯中，
+客户端都会提供 ID 来保证服务端能够区分。</p>
+<p>这样这个问题就能够比较完美的解决（除了增加性能开销，不过不大）。</p>
 </div>
 </div>
 </div>
