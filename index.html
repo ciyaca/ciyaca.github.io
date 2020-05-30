@@ -111,7 +111,13 @@
 <li><a class="reference internal" href="#id41">分工和人员合作</a><ul>
 <li><a class="reference internal" href="#id42">分工</a></li>
 <li><a class="reference internal" href="#id43">合作</a><ul>
-<li><a class="reference internal" href="#id44">会议记录</a></li>
+<li><a class="reference internal" href="#id44">会议记录</a><ul>
+<li><a class="reference internal" href="#id45">三月九日</a></li>
+<li><a class="reference internal" href="#id46">三月十六日</a></li>
+<li><a class="reference internal" href="#id47">四月中旬</a></li>
+<li><a class="reference internal" href="#id48">五月上旬</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -159,9 +165,9 @@
 <p>CIYACA 是为北京理工大学《2020年春季Linux 系统编程》大作业而开发的聊天+ BBS 软件，
 包括服务端和客户端，均采用 C/CPP 实现。</p>
 <p>我们的 Github Organization: <a class="reference external" href="https://github.com/ciyaca">https://github.com/ciyaca</a></p>
-<div class="figure align-default" id="id45">
+<div class="figure align-default" id="id49">
 <img alt="_images/repo.png" src="_images/repo.png" />
-<p class="caption"><span class="caption-text">代码仓库</span><a class="headerlink" href="#id45" title="永久链接至图片">¶</a></p>
+<p class="caption"><span class="caption-text">代码仓库</span><a class="headerlink" href="#id49" title="永久链接至图片">¶</a></p>
 </div>
 </div>
 <div class="section" id="id3">
@@ -197,8 +203,8 @@
 <h2>功能介绍<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h2>
 <div class="section" id="id10">
 <h3>基本功能<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h3>
-<table class="colwidths-given docutils align-default" id="id46">
-<caption><span class="caption-text">基本功能介绍</span><a class="headerlink" href="#id46" title="永久链接至表格">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id50">
+<caption><span class="caption-text">基本功能介绍</span><a class="headerlink" href="#id50" title="永久链接至表格">¶</a></caption>
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -375,9 +381,9 @@
 </div>
 <div class="section" id="id23">
 <h5>模块架构<a class="headerlink" href="#id23" title="永久链接至标题">¶</a></h5>
-<div class="figure align-default" id="id47">
+<div class="figure align-default" id="id51">
 <img alt="_images/FerverRPC_arch.png" src="_images/FerverRPC_arch.png" />
-<p class="caption"><span class="caption-text">FeverRPC 模块架构</span><a class="headerlink" href="#id47" title="永久链接至图片">¶</a></p>
+<p class="caption"><span class="caption-text">FeverRPC 模块架构</span><a class="headerlink" href="#id51" title="永久链接至图片">¶</a></p>
 </div>
 <dl class="field-list">
 <dt class="field-odd">FeverRPC::FeverRPC</dt>
@@ -644,6 +650,65 @@
 <h3>合作<a class="headerlink" href="#id43" title="永久链接至标题">¶</a></h3>
 <div class="section" id="id44">
 <h4>会议记录<a class="headerlink" href="#id44" title="永久链接至标题">¶</a></h4>
+<div class="section" id="id45">
+<h5>三月九日<a class="headerlink" href="#id45" title="永久链接至标题">¶</a></h5>
+<dl class="field-list">
+<dt class="field-odd">主要内容</dt>
+<dd class="field-odd"><p>讨论项目的技术栈，以及明确需求。</p>
+</dd>
+<dt class="field-even">讨论结果</dt>
+<dd class="field-even"><p>我们主要对技术栈进行了分析和选择，比如</p>
+<ul class="simple">
+<li><p>考虑使用 Rust 来作为后端服务器，稳定性更好</p></li>
+<li><p>使用 Github 进行代码协作</p></li>
+<li><p>使用 QT 进行客户端开发</p></li>
+<li><p>使用 doxygen 进行 C++ 文档管理</p></li>
+<li><p>使用 PostgreSQL</p></li>
+</ul>
+<p>在使用 Rust 的方面我们进行了比较多的讨论，主要是后端的 Rust 其实封装 Linux API 比较多，不太好直接操作 api（因而不是很符合老师的要求）；但是如果采用 C++ + WebSocket 的话，其实自己操作 IO 的部分也很少（会使用大量的库），所以感觉 Rust 并没有不让用。</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="id46">
+<h5>三月十六日<a class="headerlink" href="#id46" title="永久链接至标题">¶</a></h5>
+<dl class="field-list simple">
+<dt class="field-odd">主要内容</dt>
+<dd class="field-odd"><p>确定分工、各自的任务以及下一步的结果。</p>
+</dd>
+<dt class="field-even">讨论结果</dt>
+<dd class="field-even"><p>一开始还是在后端语言的问题上纠结，然后再次向老师确认以后，发现只能用 C/C++ 了。</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="id47">
+<h5>四月中旬<a class="headerlink" href="#id47" title="永久链接至标题">¶</a></h5>
+<dl class="field-list simple">
+<dt class="field-odd">进度</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p>GUI：已经有大致的窗体</p></li>
+<li><p>数据库: 已经有表了</p></li>
+<li><p>RPC: 差不多了，可以进行双向的调用</p></li>
+</ul>
+</dd>
+<dt class="field-even">更多的分析</dt>
+<dd class="field-even"><ul class="simple">
+<li><p>可以尝试 SQLite 减小运行的要求</p></li>
+<li><p>文档可以开始做了</p></li>
+<li><p>前后端的逻辑代码可以开始完成了</p></li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="id48">
+<h5>五月上旬<a class="headerlink" href="#id48" title="永久链接至标题">¶</a></h5>
+<dl class="field-list">
+<dt class="field-odd">主要内容</dt>
+<dd class="field-odd"><p>是分享目前进度。</p>
+<p>客户端与服务端统一接口。</p>
+</dd>
+</dl>
+<p><strong>后续的会议大多以两、三位成员的规模进行召开，涉及到比较细节的问题。因此不再记录。</strong></p>
+</div>
 </div>
 </div>
 </div>
