@@ -80,6 +80,8 @@ latex_elements = {
     'cmappkg': '',
     'preamble': r'''
 \usepackage{ctex}
+\usepackage{indentfirst}
+\setlength{\parindent}{2em}
 ''',
     'classoptions': ',oneside',
 }
