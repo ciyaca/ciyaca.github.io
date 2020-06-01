@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
   <head>
     <meta charset="utf-8" />
-    <title>CIYACA-开发文档 &#8212; CIYACA 开发文档 1.0 文档</title>
+    <title>CIYACA-开发文档 &#8212; 《Linux 系统编程》大作业 CIYACA 开发文档 1.0 文档</title>
     <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
@@ -21,7 +21,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="总目录"
              accesskey="I">索引</a></li>
-        <li class="nav-item nav-item-0"><a href="#">CIYACA 开发文档 1.0 文档</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="#">《Linux 系统编程》大作业 CIYACA 开发文档 1.0 文档</a> &#187;</li> 
       </ul>
     </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
@@ -106,16 +106,17 @@
 <li><a class="reference internal" href="#id40">解决方法</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#id41">数据库设计方面</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id41">分工和人员合作</a><ul>
-<li><a class="reference internal" href="#id42">分工</a></li>
-<li><a class="reference internal" href="#id43">合作</a><ul>
-<li><a class="reference internal" href="#id44">会议记录</a><ul>
-<li><a class="reference internal" href="#id45">三月九日</a></li>
-<li><a class="reference internal" href="#id46">三月十六日</a></li>
-<li><a class="reference internal" href="#id47">四月中旬</a></li>
-<li><a class="reference internal" href="#id48">五月上旬</a></li>
+<li><a class="reference internal" href="#id42">分工和人员合作</a><ul>
+<li><a class="reference internal" href="#id43">分工</a></li>
+<li><a class="reference internal" href="#id44">合作</a><ul>
+<li><a class="reference internal" href="#id45">会议记录</a><ul>
+<li><a class="reference internal" href="#id46">三月九日</a></li>
+<li><a class="reference internal" href="#id47">三月十六日</a></li>
+<li><a class="reference internal" href="#id48">四月中旬</a></li>
+<li><a class="reference internal" href="#id49">五月上旬</a></li>
 </ul>
 </li>
 </ul>
@@ -159,15 +160,16 @@
 <h2>简介<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
 <div class="section" id="id2">
 <h3>CIYACA 是什么<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h3>
-<div class="figure align-default">
+<div class="figure align-default" id="id50">
 <img alt="_images/logo.png" src="_images/logo.png" />
+<p class="caption"><span class="caption-number">图 1 </span><span class="caption-text">我们设计的 LOGO</span><a class="headerlink" href="#id50" title="永久链接至图片">¶</a></p>
 </div>
 <p>CIYACA 是为北京理工大学《2020年春季Linux 系统编程》大作业而开发的聊天+ BBS 软件，
 包括服务端和客户端，均采用 C/CPP 实现。</p>
 <p>我们的 Github Organization: <a class="reference external" href="https://github.com/ciyaca">https://github.com/ciyaca</a></p>
-<div class="figure align-default" id="id49">
+<div class="figure align-default" id="id51">
 <img alt="_images/repo.png" src="_images/repo.png" />
-<p class="caption"><span class="caption-text">代码仓库</span><a class="headerlink" href="#id49" title="永久链接至图片">¶</a></p>
+<p class="caption"><span class="caption-number">图 2 </span><span class="caption-text">代码仓库</span><a class="headerlink" href="#id51" title="永久链接至图片">¶</a></p>
 </div>
 </div>
 <div class="section" id="id3">
@@ -203,8 +205,8 @@
 <h2>功能介绍<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h2>
 <div class="section" id="id10">
 <h3>基本功能<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h3>
-<table class="colwidths-given docutils align-default" id="id50">
-<caption><span class="caption-text">基本功能介绍</span><a class="headerlink" href="#id50" title="永久链接至表格">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id52">
+<caption><span class="caption-number">表 1 </span><span class="caption-text">基本功能介绍</span><a class="headerlink" href="#id52" title="永久链接至表格">¶</a></caption>
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -253,6 +255,20 @@
 <h2>架构设计<a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h2>
 <div class="section" id="id13">
 <h3>整体架构<a class="headerlink" href="#id13" title="永久链接至标题">¶</a></h3>
+<div class="figure align-default" id="system-architect">
+<img alt="_images/Linux_系统编程_系统架构.png" src="_images/Linux_系统编程_系统架构.png" />
+<p class="caption"><span class="caption-number">图 3 </span><span class="caption-text">系统架构</span><a class="headerlink" href="#system-architect" title="永久链接至图片">¶</a></p>
+</div>
+<p>如 <a class="reference internal" href="#system-architect"><span class="std std-numref">图 3</span></a> 所示，系统架构分为五个主要的部分（每个模块的具体设计将在下面章节详述）:</p>
+<p>TODO</p>
+<ul class="simple">
+<li><p>QT GUI 模块， 与用户交互并调用底层通讯。详见 <a class="reference internal" href="#id15">界面设计</a> 。</p></li>
+<li><p>客户端逻辑代码模块，提供客户端应用逻辑。详见。</p></li>
+<li><p>双向 RPC 调用模块，将网络通信封装成函数调用。详见 <a class="reference internal" href="#feverrpc-ng">网络通信 —— FeverRPC-ng</a> 。</p></li>
+<li><p>服务端逻辑代码模块，提供服务端应用逻辑。详见。</p></li>
+<li><p>数据库调用模块，提供数据持久化支持。详见 <a class="reference internal" href="#id34">数据库的设计与建立</a> 。</p></li>
+</ul>
+<p><em>注意模块之间的通讯形式各不相同。</em></p>
 </div>
 <div class="section" id="id14">
 <h3>模块设计<a class="headerlink" href="#id14" title="永久链接至标题">¶</a></h3>
@@ -381,9 +397,9 @@
 </div>
 <div class="section" id="id23">
 <h5>模块架构<a class="headerlink" href="#id23" title="永久链接至标题">¶</a></h5>
-<div class="figure align-default" id="id51">
+<div class="figure align-default" id="id53">
 <img alt="_images/FerverRPC_arch.png" src="_images/FerverRPC_arch.png" />
-<p class="caption"><span class="caption-text">FeverRPC 模块架构</span><a class="headerlink" href="#id51" title="永久链接至图片">¶</a></p>
+<p class="caption"><span class="caption-number">图 4 </span><span class="caption-text">FeverRPC 模块架构</span><a class="headerlink" href="#id53" title="永久链接至图片">¶</a></p>
 </div>
 <dl class="field-list">
 <dt class="field-odd">FeverRPC::FeverRPC</dt>
@@ -640,18 +656,60 @@
 <p>这样这个问题就能够比较完美的解决（除了增加性能开销，不过不大）。</p>
 </div>
 </div>
-</div>
 <div class="section" id="id41">
-<h2>分工和人员合作<a class="headerlink" href="#id41" title="永久链接至标题">¶</a></h2>
-<div class="section" id="id42">
-<h3>分工<a class="headerlink" href="#id42" title="永久链接至标题">¶</a></h3>
+<h3>数据库设计方面<a class="headerlink" href="#id41" title="永久链接至标题">¶</a></h3>
+<p>作为一名数据库设计与开发者，体会到了在实际的项目开发中，数据库作为最为基础的一个功能，在各个功能的实现中都有涉及。在数据库设计的过程中，我遇到了各种各样的问题，比如各个表间同一字段取名不同导致使用不方便、主键设置不当导致无法插入多条聊天记录……让我体会到设计出一个稳定的数据库是一件非常困难的事情。</p>
 </div>
+</div>
+<div class="section" id="id42">
+<h2>分工和人员合作<a class="headerlink" href="#id42" title="永久链接至标题">¶</a></h2>
 <div class="section" id="id43">
-<h3>合作<a class="headerlink" href="#id43" title="永久链接至标题">¶</a></h3>
+<h3>分工<a class="headerlink" href="#id43" title="永久链接至标题">¶</a></h3>
+<table class="colwidths-given docutils align-default" id="id54">
+<caption><span class="caption-number">表 2 </span><span class="caption-text">成员分工</span><a class="headerlink" href="#id54" title="永久链接至表格">¶</a></caption>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>姓名</p></th>
+<th class="head"><p>学号</p></th>
+<th class="head"><p>分工</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>董斌</p></td>
+<td><p>1120173585</p></td>
+<td><p>负责客户端界面的设计和客户端的开发工作，相关文档撰写</p></td>
+</tr>
+<tr class="row-odd"><td><p>冯开宇</p></td>
+<td><p>1120171224</p></td>
+<td><p>负责网络通信框架FeverRPC-ng 的开发和维护，相关文档撰写和文档排版，以及项目计划的制定和督促工作</p></td>
+</tr>
+<tr class="row-even"><td><p>李昌昊</p></td>
+<td><p>1120173304</p></td>
+<td><p>李昌昊负责数据库的设计与建立，以及相关Mysql语句编写，相关文档撰写</p></td>
+</tr>
+<tr class="row-odd"><td><p>王占坤</p></td>
+<td><p>1120170124</p></td>
+<td><p>负责部分客户端的开发和接口的编写工作</p></td>
+</tr>
+<tr class="row-even"><td><p>张剑威</p></td>
+<td><p>1120173586</p></td>
+<td><p>张剑威负责后端接口的编写以及各个成员之间的协调工作</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 <div class="section" id="id44">
-<h4>会议记录<a class="headerlink" href="#id44" title="永久链接至标题">¶</a></h4>
+<h3>合作<a class="headerlink" href="#id44" title="永久链接至标题">¶</a></h3>
+<p>我们小组在项目开始通过小组会议的方式实现了对项目的大体分工。</p>
+<p>在确定好分工后，会定期开展会议来分享大家的进度以及遇到的问题。同时，小组内部部分成员会不定期讨论来决定一些细节问题，比如接口设计问题，并通过及时沟通解决开发上遇到的冲突。我们项目实现了成员职责的明确界定，项目的每个部分都有对应的负责人。我们重视人际协调和沟通，每个人遇到问题，我们大家都会想办法一起解决。通过我们良好的人员合作，我们最终圆满完成了这个项目。</p>
 <div class="section" id="id45">
-<h5>三月九日<a class="headerlink" href="#id45" title="永久链接至标题">¶</a></h5>
+<h4>会议记录<a class="headerlink" href="#id45" title="永久链接至标题">¶</a></h4>
+<div class="section" id="id46">
+<h5>三月九日<a class="headerlink" href="#id46" title="永久链接至标题">¶</a></h5>
 <dl class="field-list">
 <dt class="field-odd">主要内容</dt>
 <dd class="field-odd"><p>讨论项目的技术栈，以及明确需求。</p>
@@ -669,8 +727,8 @@
 </dd>
 </dl>
 </div>
-<div class="section" id="id46">
-<h5>三月十六日<a class="headerlink" href="#id46" title="永久链接至标题">¶</a></h5>
+<div class="section" id="id47">
+<h5>三月十六日<a class="headerlink" href="#id47" title="永久链接至标题">¶</a></h5>
 <dl class="field-list simple">
 <dt class="field-odd">主要内容</dt>
 <dd class="field-odd"><p>确定分工、各自的任务以及下一步的结果。</p>
@@ -680,8 +738,8 @@
 </dd>
 </dl>
 </div>
-<div class="section" id="id47">
-<h5>四月中旬<a class="headerlink" href="#id47" title="永久链接至标题">¶</a></h5>
+<div class="section" id="id48">
+<h5>四月中旬<a class="headerlink" href="#id48" title="永久链接至标题">¶</a></h5>
 <dl class="field-list simple">
 <dt class="field-odd">进度</dt>
 <dd class="field-odd"><ul class="simple">
@@ -699,8 +757,8 @@
 </dd>
 </dl>
 </div>
-<div class="section" id="id48">
-<h5>五月上旬<a class="headerlink" href="#id48" title="永久链接至标题">¶</a></h5>
+<div class="section" id="id49">
+<h5>五月上旬<a class="headerlink" href="#id49" title="永久链接至标题">¶</a></h5>
 <dl class="field-list">
 <dt class="field-odd">主要内容</dt>
 <dd class="field-odd"><p>是分享目前进度。</p>
@@ -726,11 +784,11 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="总目录"
              >索引</a></li>
-        <li class="nav-item nav-item-0"><a href="#">CIYACA 开发文档 1.0 文档</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="#">《Linux 系统编程》大作业 CIYACA 开发文档 1.0 文档</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; 版权所有 2020, CIYACA-group.
+        &#169; 版权所有 2020, CIYACA 团队.
       由 <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4 创建。
     </div>
   </body>
