@@ -82,6 +82,96 @@ CIYACA 采用递归的命名方式， `CIYACA Is Yet Another Chat App` 。
 具体功能
 ------------------
 
+登录、注册界面
+^^^^^^^^^^^^^^^^^^^
+
+.. list-table:: 登录、注册界面
+  :header-rows: 1
+
+  * - 截图
+    - 描述
+
+  * - .. figure:: ./_static/feature-login-1.png
+        :figwidth: 300px
+        :align: left
+    - 登录界面
+
+  * - .. figure:: ./_static/feature-login-2.png
+        :figwidth: 300px
+        :align: left
+    - 注册界面
+
+  * - .. figure:: ./_static/feature-login-3.png
+        :figwidth: 300px
+        :align: left
+    - 密码的隐藏与显示
+  
+处理好友申请
+^^^^^^^^^^^^^^^
+
+.. list-table:: 处理好友申请
+  :header-rows: 1
+
+  * - 截图
+    - 描述
+
+  * - .. figure:: ./_static/feature-friend-3.png
+        :figwidth: 300px
+        :align: left
+    - 添加好友（或者群组）
+
+  * - .. figure:: ./_static/feature-friend-1.png
+        :figwidth: 300px
+        :align: left
+    - 同意好友请求
+  
+  * - .. figure:: ./_static/feature-friend-2.png
+        :figwidth: 300px
+        :align: left
+    - 左侧好友列表中，新的好友已经添加
+  
+
+单聊与群聊
+^^^^^^^^^^^^^^
+
+.. list-table:: 处理好友申请
+  :header-rows: 1
+
+  * - 截图
+    - 描述
+
+  * - .. figure:: ./_static/feature-chat-1.png
+        :figwidth: 300px
+        :align: left
+    - 单聊
+
+  * - .. figure:: ./_static/feature-chat-2.png
+        :figwidth: 300px
+        :align: left
+    - 创建群组
+      
+      
+  * - .. figure:: ./_static/feature-chat-3.png
+        :figwidth: 300px
+        :align: left
+    - 联系人树状显示
+
+// TODO
+
+文件传送
+^^^^^^^^^^^^^^
+ 
+.. list-table:: 处理好友申请
+  :header-rows: 1
+
+  * - 截图
+    - 描述
+
+ 
+  * - .. figure:: ./_static/feature-file-1.png
+        :figwidth: 300px
+    - 传送一个图片
+
 架构设计
 ====================
 
