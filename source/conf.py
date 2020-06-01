@@ -17,9 +17,9 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'CIYACA 开发文档'
-copyright = '2020, CIYACA-group'
-author = 'CIYACA-group'
+project = '《Linux 系统编程》大作业 CIYACA 开发文档'
+copyright = '2020, CIYACA 团队'
+author = '北京理工大学 CIYACA 团队'
 
 # The full version, including alpha/beta/rc tags
 release = '1.0'
@@ -68,6 +68,8 @@ html_theme_options = {
         # 'donate.html',
     # ]
 # }
+
+numfig = True
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
