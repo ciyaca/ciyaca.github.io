@@ -1,5 +1,7 @@
 # 《Linux 系统编程》大作业文档
 
+[![](https://flat.badgen.net/github/status/ciyaca/ciyaca.github.io/source)]()
+
 ![](./source/_static/logo.png)
 
 这个仓库存放大作业文档的源文件，采用 ReStructured Text 写作，Sphinx 排版。
