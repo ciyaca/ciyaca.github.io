@@ -47,6 +47,7 @@
 <li><a class="reference internal" href="#id12">登录、注册界面</a></li>
 <li><a class="reference internal" href="#id13">处理好友申请</a></li>
 <li><a class="reference internal" href="#id14">单聊与群聊</a></li>
+<li><a class="reference internal" href="#bbs">BBS 论坛</a></li>
 <li><a class="reference internal" href="#id15">文件传送</a></li>
 </ul>
 </li>
@@ -61,33 +62,39 @@
 <li><a class="reference internal" href="#id22">主体界面设计思路</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#feverrpc-ng">网络通信 —— FeverRPC-ng</a><ul>
-<li><a class="reference internal" href="#id23">功能</a><ul>
-<li><a class="reference internal" href="#id24">支持的功能</a></li>
-<li><a class="reference internal" href="#id25">不支持的功能</a></li>
+<li><a class="reference internal" href="#id23">客户端设计</a><ul>
+<li><a class="reference internal" href="#id24">功能区设计</a></li>
+<li><a class="reference internal" href="#id25">帖子打包</a></li>
+<li><a class="reference internal" href="#id26">帖子解析</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id26">设计目标</a></li>
-<li><a class="reference internal" href="#id27">模块架构</a></li>
-<li><a class="reference internal" href="#id28">绑定-执行机制设计</a></li>
-<li><a class="reference internal" href="#id29">任意类型不定长参数设计</a></li>
-<li><a class="reference internal" href="#id30">任意长数据传送设计</a></li>
+<li><a class="reference internal" href="#feverrpc-ng">网络通信 —— FeverRPC-ng</a><ul>
+<li><a class="reference internal" href="#id27">功能</a><ul>
+<li><a class="reference internal" href="#id28">支持的功能</a></li>
+<li><a class="reference internal" href="#id29">不支持的功能</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id30">设计目标</a></li>
+<li><a class="reference internal" href="#id31">模块架构</a></li>
+<li><a class="reference internal" href="#id32">绑定-执行机制设计</a></li>
+<li><a class="reference internal" href="#id33">任意类型不定长参数设计</a></li>
+<li><a class="reference internal" href="#id34">任意长数据传送设计</a></li>
 <li><a class="reference internal" href="#debug">Debug 与错误处理设计</a></li>
-<li><a class="reference internal" href="#id31">双向调用设计</a></li>
-<li><a class="reference internal" href="#id32">依赖</a><ul>
-<li><a class="reference internal" href="#id33">运行依赖</a></li>
+<li><a class="reference internal" href="#id35">双向调用设计</a></li>
+<li><a class="reference internal" href="#id36">依赖</a><ul>
+<li><a class="reference internal" href="#id37">运行依赖</a></li>
 <li><a class="reference internal" href="#linux">涉及的 Linux 系统调用</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id34">开发者注意事项</a><ul>
-<li><a class="reference internal" href="#id35">为什么你需要它</a></li>
-<li><a class="reference internal" href="#id36">解决双向调用的身份识别问题</a></li>
+<li><a class="reference internal" href="#id38">开发者注意事项</a><ul>
+<li><a class="reference internal" href="#id39">为什么你需要它</a></li>
+<li><a class="reference internal" href="#id40">解决双向调用的身份识别问题</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id37">鸣谢</a></li>
+<li><a class="reference internal" href="#id41">鸣谢</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id38">数据库的设计与建立</a><ul>
+<li><a class="reference internal" href="#id42">数据库的设计与建立</a><ul>
 <li><a class="reference internal" href="#user">User 表</a></li>
 <li><a class="reference internal" href="#single-chat-info">single_chat_info表</a></li>
 <li><a class="reference internal" href="#single-chat-history">single_chat_history表</a></li>
@@ -101,28 +108,28 @@
 </li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id39">困难与解决办法</a><ul>
+<li><a class="reference internal" href="#id43">困难与解决办法</a><ul>
 <li><a class="reference internal" href="#rpc">解决双向 RPC 设计中可变长模板参数的设计</a><ul>
-<li><a class="reference internal" href="#id40">难点</a></li>
-<li><a class="reference internal" href="#id41">解决方法</a></li>
+<li><a class="reference internal" href="#id44">难点</a></li>
+<li><a class="reference internal" href="#id45">解决方法</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id42">解决双向 RPC 调用中身份认证的问题</a><ul>
-<li><a class="reference internal" href="#id43">难点</a></li>
-<li><a class="reference internal" href="#id44">解决方法</a></li>
+<li><a class="reference internal" href="#id46">解决双向 RPC 调用中身份认证的问题</a><ul>
+<li><a class="reference internal" href="#id47">难点</a></li>
+<li><a class="reference internal" href="#id48">解决方法</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id45">数据库设计方面</a></li>
+<li><a class="reference internal" href="#id49">数据库设计方面</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id46">分工和人员合作</a><ul>
-<li><a class="reference internal" href="#id47">分工</a></li>
-<li><a class="reference internal" href="#id48">合作</a><ul>
-<li><a class="reference internal" href="#id49">会议记录</a><ul>
-<li><a class="reference internal" href="#id50">三月九日</a></li>
-<li><a class="reference internal" href="#id51">三月十六日</a></li>
-<li><a class="reference internal" href="#id52">四月中旬</a></li>
-<li><a class="reference internal" href="#id53">五月上旬</a></li>
+<li><a class="reference internal" href="#id50">分工和人员合作</a><ul>
+<li><a class="reference internal" href="#id51">分工</a></li>
+<li><a class="reference internal" href="#id52">合作</a><ul>
+<li><a class="reference internal" href="#id53">会议记录</a><ul>
+<li><a class="reference internal" href="#id54">三月九日</a></li>
+<li><a class="reference internal" href="#id55">三月十六日</a></li>
+<li><a class="reference internal" href="#id56">四月中旬</a></li>
+<li><a class="reference internal" href="#id57">五月上旬</a></li>
 </ul>
 </li>
 </ul>
@@ -166,16 +173,16 @@
 <h2>简介<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
 <div class="section" id="id2">
 <h3>CIYACA 是什么<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h3>
-<div class="figure align-default" id="id54">
+<div class="figure align-default" id="id58">
 <img alt="_images/logo.png" src="_images/logo.png" />
-<p class="caption"><span class="caption-number">图 1 </span><span class="caption-text">我们设计的 LOGO</span><a class="headerlink" href="#id54" title="永久链接至图片">¶</a></p>
+<p class="caption"><span class="caption-number">图 1 </span><span class="caption-text">我们设计的 LOGO</span><a class="headerlink" href="#id58" title="永久链接至图片">¶</a></p>
 </div>
 <p>CIYACA 是为北京理工大学《2020年春季Linux 系统编程》大作业而开发的聊天+ BBS 软件，
 包括服务端和客户端，均采用 C/CPP 实现。</p>
 <p>我们的 Github Organization: <a class="reference external" href="https://github.com/ciyaca">https://github.com/ciyaca</a></p>
-<div class="figure align-default" id="id55">
+<div class="figure align-default" id="id59">
 <img alt="_images/repo.png" src="_images/repo.png" />
-<p class="caption"><span class="caption-number">图 2 </span><span class="caption-text">代码仓库</span><a class="headerlink" href="#id55" title="永久链接至图片">¶</a></p>
+<p class="caption"><span class="caption-number">图 2 </span><span class="caption-text">代码仓库</span><a class="headerlink" href="#id59" title="永久链接至图片">¶</a></p>
 </div>
 </div>
 <div class="section" id="id3">
@@ -211,8 +218,8 @@
 <h2>功能介绍<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h2>
 <div class="section" id="id10">
 <h3>基本功能<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h3>
-<table class="colwidths-given docutils align-default" id="id56">
-<caption><span class="caption-number">表 1 </span><span class="caption-text">基本功能介绍</span><a class="headerlink" href="#id56" title="永久链接至表格">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id60">
+<caption><span class="caption-number">表 1 </span><span class="caption-text">基本功能介绍</span><a class="headerlink" href="#id60" title="永久链接至表格">¶</a></caption>
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 67%" />
@@ -250,8 +257,17 @@
 <tr class="row-even"><td><p>群聊</p></td>
 <td><p>进行群组聊天。</p></td>
 </tr>
-<tr class="row-odd"><td><p>BBS</p></td>
+<tr class="row-odd"><td><p>BBS 发帖</p></td>
 <td><p>可进行论坛聊天。</p></td>
+</tr>
+<tr class="row-even"><td><p>BBS 评论</p></td>
+<td><p>可进行论坛评论。</p></td>
+</tr>
+<tr class="row-odd"><td><p>BBS 文件上传</p></td>
+<td><p>可以上传文件到论坛。</p></td>
+</tr>
+<tr class="row-even"><td><p>BBS 文件下载</p></td>
+<td><p>可以从论坛上下载文件。</p></td>
 </tr>
 </tbody>
 </table>
@@ -260,8 +276,8 @@
 <h3>具体功能<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h3>
 <div class="section" id="id12">
 <h4>登录、注册界面<a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h4>
-<table class="docutils align-default" id="id57">
-<caption><span class="caption-number">表 2 </span><span class="caption-text">登录、注册界面</span><a class="headerlink" href="#id57" title="永久链接至表格">¶</a></caption>
+<table class="docutils align-default" id="id61">
+<caption><span class="caption-number">表 2 </span><span class="caption-text">登录、注册界面</span><a class="headerlink" href="#id61" title="永久链接至表格">¶</a></caption>
 <colgroup>
 <col style="width: 50%" />
 <col style="width: 50%" />
@@ -295,8 +311,8 @@
 </div>
 <div class="section" id="id13">
 <h4>处理好友申请<a class="headerlink" href="#id13" title="永久链接至标题">¶</a></h4>
-<table class="docutils align-default" id="id58">
-<caption><span class="caption-number">表 3 </span><span class="caption-text">处理好友申请</span><a class="headerlink" href="#id58" title="永久链接至表格">¶</a></caption>
+<table class="docutils align-default" id="id62">
+<caption><span class="caption-number">表 3 </span><span class="caption-text">处理好友申请</span><a class="headerlink" href="#id62" title="永久链接至表格">¶</a></caption>
 <colgroup>
 <col style="width: 50%" />
 <col style="width: 50%" />
@@ -330,8 +346,8 @@
 </div>
 <div class="section" id="id14">
 <h4>单聊与群聊<a class="headerlink" href="#id14" title="永久链接至标题">¶</a></h4>
-<table class="docutils align-default" id="id59">
-<caption><span class="caption-number">表 4 </span><span class="caption-text">处理好友申请</span><a class="headerlink" href="#id59" title="永久链接至表格">¶</a></caption>
+<table class="docutils align-default" id="id63">
+<caption><span class="caption-number">表 4 </span><span class="caption-text">单聊与群聊</span><a class="headerlink" href="#id63" title="永久链接至表格">¶</a></caption>
 <colgroup>
 <col style="width: 50%" />
 <col style="width: 50%" />
@@ -362,12 +378,78 @@
 </tr>
 </tbody>
 </table>
-<p>// TODO</p>
+</div>
+<div class="section" id="bbs">
+<h4>BBS 论坛<a class="headerlink" href="#bbs" title="永久链接至标题">¶</a></h4>
+<table class="colwidths-given docutils align-default" id="id64">
+<caption><span class="caption-number">表 5 </span><span class="caption-text">BBS 论坛（1）</span><a class="headerlink" href="#id64" title="永久链接至表格">¶</a></caption>
+<colgroup>
+<col style="width: 55%" />
+<col style="width: 45%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>截图</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><div class="figure align-default" style="width: 300px">
+<img alt="_images/feature-bbs-1.png" src="_images/feature-bbs-1.png" />
+</div>
+</td>
+<td><p>进入 BBS 论坛</p></td>
+</tr>
+<tr class="row-odd"><td><div class="figure align-default" style="width: 300px">
+<img alt="_images/feature-bbs-2.png" src="_images/feature-bbs-2.png" />
+</div>
+</td>
+<td><p>点击 <cite>new post</cite> 按钮调出编辑窗口，编辑窗口中的 <cite>attach file</cite> 按钮允许用户添加附件。编辑之后点击发送按钮即可在BBS界面看到新发的帖子以及附件。</p></td>
+</tr>
+<tr class="row-even"><td><div class="figure align-default" style="width: 300px">
+<img alt="_images/feature-bbs-3.png" src="_images/feature-bbs-3.png" />
+</div>
+</td>
+<td><p>同上</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default" id="id65">
+<caption><span class="caption-number">表 6 </span><span class="caption-text">BBS 论坛（2）</span><a class="headerlink" href="#id65" title="永久链接至表格">¶</a></caption>
+<colgroup>
+<col style="width: 55%" />
+<col style="width: 45%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>截图</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><div class="figure align-default" style="width: 300px">
+<img alt="_images/feature-bbs-4.png" src="_images/feature-bbs-4.png" />
+</div>
+</td>
+<td><p>点击对应帖子的 <cite>comment</cite> 按钮即可实现评论。</p></td>
+</tr>
+<tr class="row-odd"><td><div class="figure align-default" style="width: 300px">
+<img alt="_images/feature-bbs-5.png" src="_images/feature-bbs-5.png" />
+</div>
+</td>
+<td><p>在发帖子时点击 <cite>attach file</cite> 即可上传文件。</p></td>
+</tr>
+<tr class="row-even"><td><div class="figure align-default" style="width: 300px">
+<img alt="_images/feature-bbs-6.png" src="_images/feature-bbs-6.png" />
+</div>
+</td>
+<td><p>点击文件名，即可从服务器下载文件。文件默认存储在用户家目录下的 <cite>.client</cite> 隐藏文件夹。</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section" id="id15">
 <h4>文件传送<a class="headerlink" href="#id15" title="永久链接至标题">¶</a></h4>
-<table class="docutils align-default" id="id60">
-<caption><span class="caption-number">表 5 </span><span class="caption-text">处理好友申请</span><a class="headerlink" href="#id60" title="永久链接至表格">¶</a></caption>
+<table class="docutils align-default" id="id66">
+<caption><span class="caption-number">表 7 </span><span class="caption-text">文件传送</span><a class="headerlink" href="#id66" title="永久链接至表格">¶</a></caption>
 <colgroup>
 <col style="width: 50%" />
 <col style="width: 50%" />
@@ -401,10 +483,10 @@
 <p>TODO</p>
 <ul class="simple">
 <li><p>QT GUI 模块， 与用户交互并调用底层通讯。详见 <a class="reference internal" href="#id19">界面设计</a> 。</p></li>
-<li><p>客户端逻辑代码模块，提供客户端应用逻辑。详见。</p></li>
+<li><p>客户端逻辑代码模块，提供客户端应用逻辑。详见 <a class="reference internal" href="#id23">客户端设计</a> 。</p></li>
 <li><p>双向 RPC 调用模块，将网络通信封装成函数调用。详见 <a class="reference internal" href="#feverrpc-ng">网络通信 —— FeverRPC-ng</a> 。</p></li>
 <li><p>服务端逻辑代码模块，提供服务端应用逻辑。详见。</p></li>
-<li><p>数据库调用模块，提供数据持久化支持。详见 <a class="reference internal" href="#id38">数据库的设计与建立</a> 。</p></li>
+<li><p>数据库调用模块，提供数据持久化支持。详见 <a class="reference internal" href="#id42">数据库的设计与建立</a> 。</p></li>
 </ul>
 <p><em>注意模块之间的通讯形式各不相同。</em></p>
 </div>
@@ -465,6 +547,62 @@
 </dl>
 </div>
 </div>
+<div class="section" id="id23">
+<h4>客户端设计<a class="headerlink" href="#id23" title="永久链接至标题">¶</a></h4>
+<p>本小节讨论客户端的界面逻辑设计。</p>
+<div class="section" id="id24">
+<h5>功能区设计<a class="headerlink" href="#id24" title="永久链接至标题">¶</a></h5>
+<p>客户端设计分为三大块：发帖和刷新按钮功能区、BBS显示区、帖子编辑区。</p>
+<p>功能区实现的是发帖和刷新功能，点击刷新可以获取最新发布的帖子并在BBS显示区显示。点击发帖按钮可以调出编辑区。</p>
+<p>在Qt中，得益于 <cite>connect</cite> 通信机制，点击按钮可以自动新建编辑窗口。编辑窗口由 <cite>send</cite> 和 <cite>attach file</cite> 两个按钮组成的功能区和 <cite>textEditor</cite> 组成的编辑区组成。在编辑区运行输入任意文本；点击 <cite>attach file</cite> 可以调用文件系统窗口进行浏览搜索需要发送的文件。在点击 <cite>send</cite> 按钮之后，先发送文件到服务器，再发送帖子内容到服务器，完成整个发送过程。</p>
+<p>点击 <cite>refresh</cite> 按钮之后，要求服务器返回帖子内容，BBS客户端对内容进行解析，将其显示到界面上。客户端界面使用了 <cite>scroll area</cite> 实现，如果帖子数目过长过多，可通过鼠标滚轮向下翻滚。</p>
+</div>
+<div class="section" id="id25">
+<h5>帖子打包<a class="headerlink" href="#id25" title="永久链接至标题">¶</a></h5>
+<p>由于一个帖子涉及用户名、帖子内容、附件、评论等信息，对帖子的解析就很关键。</p>
+<p>规定一个帖子的基本内容封装如下,受益于html格式的封装的启发，依照规定进行封装。</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;li&gt;</span>//每个帖子使用li进行封装
+        <span class="nt">&lt;div&gt;</span>1024<span class="nt">&lt;/div&gt;</span>//post id
+        <span class="nt">&lt;div&gt;</span>pipixia<span class="nt">&lt;/div&gt;</span>//发帖人
+        <span class="nt">&lt;div&gt;</span>为了在文本框中显示字符串，我们常用这样两个函数实现<span class="nt">&lt;/div&gt;</span>//帖子内容
+<span class="nt">&lt;div&gt;</span>1<span class="nt">&lt;/div&gt;</span>//附件数量
+        <span class="nt">&lt;div&gt;&lt;/div&gt;</span>//附件ID号
+<span class="nt">&lt;div&gt;</span>测试.txt<span class="nt">&lt;/div&gt;</span>//附件文件名
+        <span class="nt">&lt;div&gt;</span>pipixia<span class="nt">&lt;/div&gt;</span>//评论者昵称
+        <span class="nt">&lt;div&gt;&lt;/div&gt;</span>//评论者回复的对象
+        <span class="nt">&lt;div&gt;</span>今天好开心呀<span class="nt">&lt;/div&gt;</span>//评论内容
+        <span class="nt">&lt;div&gt;</span>0<span class="nt">&lt;/div&gt;</span>//评论者发送的附件数量
+        <span class="nt">&lt;div&gt;</span>董斌<span class="nt">&lt;/div&gt;</span>//第二个评论者昵称
+        <span class="nt">&lt;div&gt;&lt;/div&gt;</span>//第二个评论者回复的对象
+        <span class="nt">&lt;div&gt;</span>我喜欢你<span class="nt">&lt;/div&gt;</span>//评论内容
+        <span class="nt">&lt;div&gt;</span>1<span class="nt">&lt;/div&gt;</span>//第二个评论者发送的附件的数量
+        <span class="nt">&lt;div&gt;&lt;/div&gt;</span>//附件ID号
+        <span class="nt">&lt;div&gt;</span>爱心.gif<span class="nt">&lt;/div&gt;</span>//附件文件名
+<span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;li&gt;</span>
+        ...//第二个帖子的内容
+<span class="nt">&lt;/li&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id26">
+<h5>帖子解析<a class="headerlink" href="#id26" title="永久链接至标题">¶</a></h5>
+<p>帖子内容是格式化的，因此给帖子内容解析带来了方便。下面对帖子内容进行解析：</p>
+<ol class="arabic simple">
+<li><p>将获取到的数个帖子 <cite>&lt;li&gt;&lt;/li&gt;</cite> 封装格式进行拆分为单个帖子
+* 为每个帖子生成一个 <cite>QWidget *post</cite> ，用于存储接下来的内容</p></li>
+<li><p>获取用户昵称，第二个 <cite>&lt;div&gt;&lt;/div&gt;</cite> 的内容
+* 每个用户信息生成一个 <cite>QWidget *user_info</cite> 包含用户名、用户头像
+* 在用户信息的右侧添加 <cite>comment</cite> 按钮，以便于对该帖子进行评论</p></li>
+<li><p>获取帖子内容，第三个 <cite>&lt;div&gt;&lt;/div&gt;</cite> 的内容
+* 生成一个 <cite>QLabel</cite> 保存帖子内容</p></li>
+<li><p>查询帖子附件个数，第四个 <cite>&lt;div&gt;&lt;/div&gt;</cite> 的内容</p></li>
+<li><p>根据附件个数查询附件，每两个 <cite>&lt;div&gt;&lt;/div&gt;</cite> 的内容表示一个附件
+* 每查询到一个附件，就生成一个 <cite>QPushButton</cite> ，用于响应下载请求。</p></li>
+<li><p>接下来的 <cite>&lt;div&gt;&lt;/div&gt;</cite> 的内容就是评论内容，其解析方式与帖子解析类似。</p></li>
+</ol>
+</div>
+</div>
 <div class="section" id="feverrpc-ng">
 <h4>网络通信 —— FeverRPC-ng<a class="headerlink" href="#feverrpc-ng" title="永久链接至标题">¶</a></h4>
 <p>FeverRPC-ng 是一个基于 Socket 长连接双向 RPC 框架。</p>
@@ -472,10 +610,10 @@
 <p class="admonition-title">注解</p>
 <p>FeverRPC-ng 为 FeverRPC 的重构版，FeverRPC 初版在大三上的时候完成的。</p>
 </div>
-<div class="section" id="id23">
-<h5>功能<a class="headerlink" href="#id23" title="永久链接至标题">¶</a></h5>
-<div class="section" id="id24">
-<h6>支持的功能<a class="headerlink" href="#id24" title="永久链接至标题">¶</a></h6>
+<div class="section" id="id27">
+<h5>功能<a class="headerlink" href="#id27" title="永久链接至标题">¶</a></h5>
+<div class="section" id="id28">
+<h6>支持的功能<a class="headerlink" href="#id28" title="永久链接至标题">¶</a></h6>
 <ul class="simple">
 <li><p>使用TCP/Socket长连接</p></li>
 <li><p>双向RPC</p></li>
@@ -485,16 +623,16 @@
 <li><p>抛出异常</p></li>
 </ul>
 </div>
-<div class="section" id="id25">
-<h6>不支持的功能<a class="headerlink" href="#id25" title="永久链接至标题">¶</a></h6>
+<div class="section" id="id29">
+<h6>不支持的功能<a class="headerlink" href="#id29" title="永久链接至标题">¶</a></h6>
 <ul class="simple">
 <li><p>void返回值</p></li>
 <li><p>绑定非静态成员函数</p></li>
 </ul>
 </div>
 </div>
-<div class="section" id="id26">
-<h5>设计目标<a class="headerlink" href="#id26" title="永久链接至标题">¶</a></h5>
+<div class="section" id="id30">
+<h5>设计目标<a class="headerlink" href="#id30" title="永久链接至标题">¶</a></h5>
 <p>FeverRPC 的设计目标是解决 Socket 通信中客户端和服务端相互调用中的序列化问题。</p>
 <p>对于一般程序来说，传统的做法是使用序列化库，每增加一个接口，就需要增加相应的转换代码和序列化、反序列化代码。
 然而这对于程序开发显然是个重复而低效的过程，我们可以使用更抽象的方式完成这一功能。</p>
@@ -533,11 +671,11 @@
 然后调用者就可以像使用普通函数调用一样，调用远程的逻辑。</p>
 <p>为了满足丰富的函数和变量类型，我们也需要提供 <strong>可变长</strong> 的参数调用。</p>
 </div>
-<div class="section" id="id27">
-<h5>模块架构<a class="headerlink" href="#id27" title="永久链接至标题">¶</a></h5>
-<div class="figure align-default" id="id61">
+<div class="section" id="id31">
+<h5>模块架构<a class="headerlink" href="#id31" title="永久链接至标题">¶</a></h5>
+<div class="figure align-default" id="id67">
 <img alt="_images/FerverRPC_arch.png" src="_images/FerverRPC_arch.png" />
-<p class="caption"><span class="caption-number">图 4 </span><span class="caption-text">FeverRPC 模块架构</span><a class="headerlink" href="#id61" title="永久链接至图片">¶</a></p>
+<p class="caption"><span class="caption-number">图 4 </span><span class="caption-text">FeverRPC 模块架构</span><a class="headerlink" href="#id67" title="永久链接至图片">¶</a></p>
 </div>
 <dl class="field-list">
 <dt class="field-odd">FeverRPC::FeverRPC</dt>
@@ -568,15 +706,15 @@
 </dd>
 </dl>
 </div>
-<div class="section" id="id28">
-<h5>绑定-执行机制设计<a class="headerlink" href="#id28" title="永久链接至标题">¶</a></h5>
+<div class="section" id="id32">
+<h5>绑定-执行机制设计<a class="headerlink" href="#id32" title="永久链接至标题">¶</a></h5>
 <p>RPC 通信需要双方首先绑定可以使用的函数，然后延迟调用。
 简单来说，就是使用一个类似 <cite>map&lt;String, Function&gt;</cite> 的映射来
 存储这些函数。</p>
 <p>在执行的时候，使用根据相应的名称从这个映射中取出函数，并传入参数执行就可以了。</p>
 </div>
-<div class="section" id="id29">
-<h5>任意类型不定长参数设计<a class="headerlink" href="#id29" title="永久链接至标题">¶</a></h5>
+<div class="section" id="id33">
+<h5>任意类型不定长参数设计<a class="headerlink" href="#id33" title="永久链接至标题">¶</a></h5>
 <p>如果仅仅需要绑定和执行，直接使用强制类型转换将函数参数统一成 <cite>void *</cite> 的方式就行了。
 但是我们有一个问题出现了，在双方通信时，变量的类型是无法传递的。如果采用 <cite>void *</cite> 的方式
 只能由上层代码将类型强制转换成需要的类型——这样增加了上层代码的工作。</p>
@@ -589,8 +727,8 @@
 <p>具体的代码比较长，详见源码。</p>
 </div>
 </div>
-<div class="section" id="id30">
-<h5>任意长数据传送设计<a class="headerlink" href="#id30" title="永久链接至标题">¶</a></h5>
+<div class="section" id="id34">
+<h5>任意长数据传送设计<a class="headerlink" href="#id34" title="永久链接至标题">¶</a></h5>
 <p>为了传输不定长的数据，我们需要对于每一个发送的数据，首先传送数据大小，然后按照 1024 字节
 分块传送数据。接收端也按照同样的逻辑接受。</p>
 </div>
@@ -613,8 +751,8 @@
 <p>这样当我们在 make 的时候传入 <cite>-DDEBUG</cite> flag，就能编译出打印调试信息的代码，
 并且每个输出都有文件名、行号、函数名。</p>
 </div>
-<div class="section" id="id31">
-<h5>双向调用设计<a class="headerlink" href="#id31" title="永久链接至标题">¶</a></h5>
+<div class="section" id="id35">
+<h5>双向调用设计<a class="headerlink" href="#id35" title="永久链接至标题">¶</a></h5>
 <p>为了满足交互需求，RPC 不仅仅需要类似 HTTP 的单向无状态请求的方式；还需要提供
 从服务端调用客户端的能力（并且在此之上保证能够记忆客户端的身份）。</p>
 <p>经管对于 Socket 协议来说，这一切是很好实现的，但是不要忘记我们将 Socket 完全封装了。
@@ -626,14 +764,14 @@
 会增加较大的工作量、增加调试难度。</p>
 </dd>
 <dt class="field-even">有状态的服务</dt>
-<dd class="field-even"><p>详见 <a class="reference internal" href="#id36">解决双向调用的身份识别问题</a></p>
+<dd class="field-even"><p>详见 <a class="reference internal" href="#id40">解决双向调用的身份识别问题</a></p>
 </dd>
 </dl>
 </div>
-<div class="section" id="id32">
-<h5>依赖<a class="headerlink" href="#id32" title="永久链接至标题">¶</a></h5>
-<div class="section" id="id33">
-<h6>运行依赖<a class="headerlink" href="#id33" title="永久链接至标题">¶</a></h6>
+<div class="section" id="id36">
+<h5>依赖<a class="headerlink" href="#id36" title="永久链接至标题">¶</a></h5>
+<div class="section" id="id37">
+<h6>运行依赖<a class="headerlink" href="#id37" title="永久链接至标题">¶</a></h6>
 <ul class="simple">
 <li><p>msgpack</p></li>
 <li><p>c++17 (因为使用了 <cite>std::apply</cite>)</p></li>
@@ -644,21 +782,21 @@
 <h6>涉及的 Linux 系统调用<a class="headerlink" href="#linux" title="永久链接至标题">¶</a></h6>
 </div>
 </div>
-<div class="section" id="id34">
-<h5>开发者注意事项<a class="headerlink" href="#id34" title="永久链接至标题">¶</a></h5>
+<div class="section" id="id38">
+<h5>开发者注意事项<a class="headerlink" href="#id38" title="永久链接至标题">¶</a></h5>
 <div class="admonition warning">
 <p class="admonition-title">警告</p>
 <p>如果你是一名开发者，这里的内容需要你认真阅读。</p>
 </div>
-<div class="section" id="id35">
-<h6>为什么你需要它<a class="headerlink" href="#id35" title="永久链接至标题">¶</a></h6>
+<div class="section" id="id39">
+<h6>为什么你需要它<a class="headerlink" href="#id39" title="永久链接至标题">¶</a></h6>
 <p>why should I use it
 你能获得的优势：</p>
 <p>在开发阶段，不在需要协商底层通信内容，只需要协商回调函数的接口（可以完全忽略网络传输的问题）。
 如果有新增的数据类型，不需要对底层的通信接口进行改动，只需要双方协商好字段和类型就可以。</p>
 </div>
-<div class="section" id="id36">
-<h6>解决双向调用的身份识别问题<a class="headerlink" href="#id36" title="永久链接至标题">¶</a></h6>
+<div class="section" id="id40">
+<h6>解决双向调用的身份识别问题<a class="headerlink" href="#id40" title="永久链接至标题">¶</a></h6>
 <p>在使用双向的 RPC 中会遇到一个棘手的问题，就是在服务端作为 Caller 的代码没有办法知道对应的 Callee 是哪个。
 比如当设计即时通信的服务时，自己 bind 的代码被调用了以后，并不能分清楚要将消息发给哪些 RPC 的对端。</p>
 <p>在想了很长时间后我发现这个问题还是需要交给通信协议（交互逻辑）去实现。简单来说， 只要满足以下两条要求就可以获得足够的信息，保证双向调用不会遇到身份认证问题。</p>
@@ -669,16 +807,16 @@
 <p>这样，在业务上足够完成身份的绑定，以便后续的操作。</p>
 </div>
 </div>
-<div class="section" id="id37">
-<h5>鸣谢<a class="headerlink" href="#id37" title="永久链接至标题">¶</a></h5>
+<div class="section" id="id41">
+<h5>鸣谢<a class="headerlink" href="#id41" title="永久链接至标题">¶</a></h5>
 <ul class="simple">
 <li><p>感谢 <a class="reference external" href="https://github.com/button-chen/buttonrpc_cpp14">button-rpc</a> 给予了我最关键的知识点</p></li>
 <li><p>其他能在搜索引擎上找到的相关教程</p></li>
 </ul>
 </div>
 </div>
-<div class="section" id="id38">
-<h4>数据库的设计与建立<a class="headerlink" href="#id38" title="永久链接至标题">¶</a></h4>
+<div class="section" id="id42">
+<h4>数据库的设计与建立<a class="headerlink" href="#id42" title="永久链接至标题">¶</a></h4>
 <p>根据最初的需求分析，我们的数据库需要记录好友的申请信息、好友信息、群聊聊天记录、群聊信息、群聊的申请信息、头像信息、私聊记录、私聊信息、未读消息以及每一个账号的信息等，故在设计数据库时设计了friend_apply、friend_info等表，下面将叙述数据库部分重要表的详细信息。</p>
 <div class="section" id="user">
 <h5>User 表<a class="headerlink" href="#user" title="永久链接至标题">¶</a></h5>
@@ -741,12 +879,12 @@
 </div>
 </div>
 </div>
-<div class="section" id="id39">
-<h2>困难与解决办法<a class="headerlink" href="#id39" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id43">
+<h2>困难与解决办法<a class="headerlink" href="#id43" title="永久链接至标题">¶</a></h2>
 <div class="section" id="rpc">
 <h3>解决双向 RPC 设计中可变长模板参数的设计<a class="headerlink" href="#rpc" title="永久链接至标题">¶</a></h3>
-<div class="section" id="id40">
-<h4>难点<a class="headerlink" href="#id40" title="永久链接至标题">¶</a></h4>
+<div class="section" id="id44">
+<h4>难点<a class="headerlink" href="#id44" title="永久链接至标题">¶</a></h4>
 <p><strong>如何不仅传递数值信息，并且传递类型信息以及根据类型信息自动反序列化</strong> ，是这个 RPC 的最大难点之一。</p>
 <p>可变长参数模板的概念实际上是超出一个普通 C/CPP 使用者的认知的。
 因为对于传统的编译型语言来说，人们的认知都是：“除了虚函数以外，很难实现运行时多态“。</p>
@@ -761,18 +899,18 @@
 类型信息没有在接收方被正确利用，所以需要双方实现约定好格式的序列化和反序列换。但是我们的希望是:
 传递类型信息，并且在接收方动态地反序列化（我们不手动判断）。</p>
 </div>
-<div class="section" id="id41">
-<h4>解决方法<a class="headerlink" href="#id41" title="永久链接至标题">¶</a></h4>
+<div class="section" id="id45">
+<h4>解决方法<a class="headerlink" href="#id45" title="永久链接至标题">¶</a></h4>
 <p>还好有可变长参数模板这一概念，以及 CPP11/14/17 中对类型提供的支持，它能够让我们使用  <cite>std::tuple</cite>
 类型来装载 Template 中的类型信息。并且通过多级的模板参数展开，我们能够还原其中的类型。</p>
 <p>然而这一系列知识以及代码实现还是非常复杂，我用了大概 3 天 × 4 个小时的时间写了两遍，并且参考了一些
 网上对于这部分知识的实验性代码，才最终有了今天这版 RPC 的动态参数调用实现。</p>
 </div>
 </div>
-<div class="section" id="id42">
-<h3>解决双向 RPC 调用中身份认证的问题<a class="headerlink" href="#id42" title="永久链接至标题">¶</a></h3>
-<div class="section" id="id43">
-<h4>难点<a class="headerlink" href="#id43" title="永久链接至标题">¶</a></h4>
+<div class="section" id="id46">
+<h3>解决双向 RPC 调用中身份认证的问题<a class="headerlink" href="#id46" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id47">
+<h4>难点<a class="headerlink" href="#id47" title="永久链接至标题">¶</a></h4>
 <p>这版 FeverRPC-ng 是基于大三上完成的初版的进一步重构。在我大三上完成整体设计的时候，
 就已经因为这个问题十分头痛。</p>
 <p>身份认证的问题是这样的：RPC 调用依赖实现注册的函数，服务端和客户端相互调用属于两个线程。
@@ -781,8 +919,8 @@
 <p>最初为了解决这个问题。我曾经试图把认证逻辑封装在了 RPC 之中，但是实事证明这样限制了灵活度，
 也让 RPC 承担了更复杂而多余的逻辑功能。</p>
 </div>
-<div class="section" id="id44">
-<h4>解决方法<a class="headerlink" href="#id44" title="永久链接至标题">¶</a></h4>
+<div class="section" id="id48">
+<h4>解决方法<a class="headerlink" href="#id48" title="永久链接至标题">¶</a></h4>
 <p>既然代码层面不好约束，在很长时间思考以后，我最终选择了从协议层面入手。</p>
 <p>也就是说使用这个 RPC 的上层代码要满足以下的协议要求：</p>
 <ol class="arabic simple">
@@ -794,17 +932,17 @@
 <p>这样这个问题就能够比较完美的解决（除了增加性能开销，不过不大）。</p>
 </div>
 </div>
-<div class="section" id="id45">
-<h3>数据库设计方面<a class="headerlink" href="#id45" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id49">
+<h3>数据库设计方面<a class="headerlink" href="#id49" title="永久链接至标题">¶</a></h3>
 <p>作为一名数据库设计与开发者，体会到了在实际的项目开发中，数据库作为最为基础的一个功能，在各个功能的实现中都有涉及。在数据库设计的过程中，我遇到了各种各样的问题，比如各个表间同一字段取名不同导致使用不方便、主键设置不当导致无法插入多条聊天记录……让我体会到设计出一个稳定的数据库是一件非常困难的事情。</p>
 </div>
 </div>
-<div class="section" id="id46">
-<h2>分工和人员合作<a class="headerlink" href="#id46" title="永久链接至标题">¶</a></h2>
-<div class="section" id="id47">
-<h3>分工<a class="headerlink" href="#id47" title="永久链接至标题">¶</a></h3>
-<table class="colwidths-given docutils align-default" id="id62">
-<caption><span class="caption-number">表 6 </span><span class="caption-text">成员分工</span><a class="headerlink" href="#id62" title="永久链接至表格">¶</a></caption>
+<div class="section" id="id50">
+<h2>分工和人员合作<a class="headerlink" href="#id50" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id51">
+<h3>分工<a class="headerlink" href="#id51" title="永久链接至标题">¶</a></h3>
+<table class="colwidths-given docutils align-default" id="id68">
+<caption><span class="caption-number">表 8 </span><span class="caption-text">成员分工</span><a class="headerlink" href="#id68" title="永久链接至表格">¶</a></caption>
 <colgroup>
 <col style="width: 25%" />
 <col style="width: 25%" />
@@ -831,7 +969,7 @@
 </tr>
 <tr class="row-odd"><td><p>王占坤</p></td>
 <td><p>1120170124</p></td>
-<td><p>负责部分客户端的开发和接口的编写工作</p></td>
+<td><p>负责部分客户端界面的开发和全部客户端接口的编写工作，相关文档撰写</p></td>
 </tr>
 <tr class="row-even"><td><p>张剑威</p></td>
 <td><p>1120173586</p></td>
@@ -840,14 +978,14 @@
 </tbody>
 </table>
 </div>
-<div class="section" id="id48">
-<h3>合作<a class="headerlink" href="#id48" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id52">
+<h3>合作<a class="headerlink" href="#id52" title="永久链接至标题">¶</a></h3>
 <p>我们小组在项目开始通过小组会议的方式实现了对项目的大体分工。</p>
 <p>在确定好分工后，会定期开展会议来分享大家的进度以及遇到的问题。同时，小组内部部分成员会不定期讨论来决定一些细节问题，比如接口设计问题，并通过及时沟通解决开发上遇到的冲突。我们项目实现了成员职责的明确界定，项目的每个部分都有对应的负责人。我们重视人际协调和沟通，每个人遇到问题，我们大家都会想办法一起解决。通过我们良好的人员合作，我们最终圆满完成了这个项目。</p>
-<div class="section" id="id49">
-<h4>会议记录<a class="headerlink" href="#id49" title="永久链接至标题">¶</a></h4>
-<div class="section" id="id50">
-<h5>三月九日<a class="headerlink" href="#id50" title="永久链接至标题">¶</a></h5>
+<div class="section" id="id53">
+<h4>会议记录<a class="headerlink" href="#id53" title="永久链接至标题">¶</a></h4>
+<div class="section" id="id54">
+<h5>三月九日<a class="headerlink" href="#id54" title="永久链接至标题">¶</a></h5>
 <dl class="field-list">
 <dt class="field-odd">主要内容</dt>
 <dd class="field-odd"><p>讨论项目的技术栈，以及明确需求。</p>
@@ -865,8 +1003,8 @@
 </dd>
 </dl>
 </div>
-<div class="section" id="id51">
-<h5>三月十六日<a class="headerlink" href="#id51" title="永久链接至标题">¶</a></h5>
+<div class="section" id="id55">
+<h5>三月十六日<a class="headerlink" href="#id55" title="永久链接至标题">¶</a></h5>
 <dl class="field-list simple">
 <dt class="field-odd">主要内容</dt>
 <dd class="field-odd"><p>确定分工、各自的任务以及下一步的结果。</p>
@@ -876,8 +1014,8 @@
 </dd>
 </dl>
 </div>
-<div class="section" id="id52">
-<h5>四月中旬<a class="headerlink" href="#id52" title="永久链接至标题">¶</a></h5>
+<div class="section" id="id56">
+<h5>四月中旬<a class="headerlink" href="#id56" title="永久链接至标题">¶</a></h5>
 <dl class="field-list simple">
 <dt class="field-odd">进度</dt>
 <dd class="field-odd"><ul class="simple">
@@ -895,8 +1033,8 @@
 </dd>
 </dl>
 </div>
-<div class="section" id="id53">
-<h5>五月上旬<a class="headerlink" href="#id53" title="永久链接至标题">¶</a></h5>
+<div class="section" id="id57">
+<h5>五月上旬<a class="headerlink" href="#id57" title="永久链接至标题">¶</a></h5>
 <dl class="field-list">
 <dt class="field-odd">主要内容</dt>
 <dd class="field-odd"><p>是分享目前进度。</p>
