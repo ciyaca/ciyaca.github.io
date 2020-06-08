@@ -135,6 +135,7 @@ CIYACA 采用递归的命名方式， `CIYACA Is Yet Another Chat App` 。
 ::
 
   git clone https://github.com/ciyaca/ciyaca.git
+  git pull --recurse-submodules # 递归获取子模块
 
 *或者下载压缩包*
 
