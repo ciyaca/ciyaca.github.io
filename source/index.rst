@@ -62,13 +62,77 @@ CIYACA 采用递归的命名方式， `CIYACA Is Yet Another Chat App` 。
 ------------------
 
 
+::
+
+  ..
+  ├── client
+  │   └── src
+  │       ├── addfriend.cpp//添加好友
+  │       ├── bbsnewpostdialog.cpp//bbs发帖
+  │       ├── bbspostlistwidget.cpp//bbs帖子显示结构
+  │       ├── BBSPostReceiver.cpp//收贴
+  │       ├── chatface.cpp//聊天
+  │       ├── chatmessage.cpp//聊天信息
+  │       ├── chatmessage.h
+  │       ├── client.cpp//登录
+  │       ├── client.h
+  │       ├── come_message.cpp//来信
+  │       ├── come_message.h
+  │       ├── common.cpp//通用数据结构
+  │       ├── common.h
+  │       ├── contactitem.cpp//联系人
+  │       ├── contactitem.h
+  │       ├── controller.cpp//主控函数
+  │       ├── controller.h
+  │       ├── creategroup.cpp//创建群组
+  │       ├── emoji.cpp//emoji表情
+  │       ├── emojiwidget.cpp//显示emoji的框
+  │       ├── feverrpc//底层通信rpc模块
+  │       │   ├── feverrpc-client.cpp
+  │       │   ├── feverrpc-client.hpp
+  |       |   |.....
+  │       ├── friendrequest.cpp//好友请求
+  │       ├── main.cpp
+  │       ├── mainwindow.cpp//主界面
+  │       ├── mainwindow.h
+  ├── images
+  │   └── logo.png
+  ├── LICENSE
+  ├── README.md
+  └── server
+      ├── account.cpp	// 账户、群组、好友管理
+      ├── account.hpp
+      ├── bbs.cpp	// bbs服务、云文件实现
+      ├── bbs.hpp
+      ├── im.cpp	//单聊、群聊、历史消息实现
+      ├── im.hpp
+      ├── makefile
+      ├── net_disk	//云文件的存储目录
+      │   ├── addfriend.cpp
+      │   ├── addfriend.o
+      │   ├── outTestFile.txt
+      │   └── Screenshot from 2020-05-27 19-07-21.png
+      ├── README.md
+      ├── server_main.cpp	//主程序
+      ├── sql
+      │   ├── ciyacaSQL.sql	//数据库文件
+      │   ├── sql.cpp	//数据库初始化与访问实现
+      │   └── sql.hpp
+      └── test	//功能测试程序
+          ├── file.txt
+          ├── testCiyacaSQL
+          ├── testCiyacaSQL.cpp
+          ├── testFileTransmit
+          └── testFileTransmit.cpp
+
+
 使用方式
 ------------------
 
 下载项目
 ^^^^^^^^^^^^^^^^^
 
-.. 
+::
 
   git clone https://github.com/ciyaca/ciyaca.git
 
@@ -1018,7 +1082,7 @@ BBS呈现问题
   冯开宇, 1120171224, 负责网络通信框架FeverRPC-ng 的开发和维护，相关文档撰写和文档排版，以及项目计划的制定和督促工作
   李昌昊, 1120173304, 李昌昊负责数据库的设计与建立，以及相关Mysql语句编写，相关文档撰写
   王占坤, 1120170124, 负责部分客户端界面的开发和全部客户端接口的编写工作，相关文档撰写
-  张剑威, 1120173586, 张剑威负责后端接口的编写以及各个成员之间的协调工作
+  张剑威, 1120173586, 张剑威负责后端接口的编写以及各个成员之间的协调工作，相关文档撰写
 
 合作
 ------------------
