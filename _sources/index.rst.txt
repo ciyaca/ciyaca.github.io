@@ -49,6 +49,15 @@ CIYACA 采用递归的命名方式， `CIYACA Is Yet Another Chat App` 。
 编译环境
 ------------------
 
+最低版本:
+
+- Ubuntu 18.04
+- g++ 7.5.0
+- make 4.1
+- qt 5.14.0
+- MySQL Ver 14.14 Distrib 5.7.30
+- msgpack 3.2.1
+
 目录结构
 ------------------
 
@@ -56,6 +65,47 @@ CIYACA 采用递归的命名方式， `CIYACA Is Yet Another Chat App` 。
 使用方式
 ------------------
 
+下载项目
+^^^^^^^^^^^^^^^^^
+
+.. 
+
+  git clone https://github.com/ciyaca/ciyaca.git
+
+*或者下载压缩包*
+
+编译运行
+^^^^^^^^^^^^^^^^^
+
+首先编译运行server，然后再启动客户端。
+
+server
+""""""""""""""""
+
+1. 安装并运行 MySQL
+2. 在项目根目录中使用 make all 命令，所有源码会被编译，得到的 server 主程序的可执行文件置于 bin/server
+3. 对于 sql/ciyacaSQL.sql ，在 MySQL 里创建一个名为 ciyacaSQL的数据库，并使用 source 命令将其导入
+4. 在数据库导入完毕后，将 sql/sql.cpp中的 mysql_real_connect 函数连接参数填写正确（MySQL 登录账户、登录口令、端口、数据库名等）
+5. 执行 bin/server 即可启动服务端程序
+
+client
+""""""""""""""""
+
+1. 下载Qt 5.14.0
+2. 安装时选择全部组件
+3. 使用qt打开工程，选择client/serc/test.pro进行加载
+4. 运行即可
+
+
+
+开发前的配置要求
+^^^^^^^^^^^^^^^^^^^^^^
+
+1. 安装msgpack
+  1. 请访问https://github.com/msgpack/msgpack-c/tree/cpp_master自行编译安装
+2. 安装qt5.14.0
+3. 安装mysql 5.7.30
+4. 依据server说明配置数据库
 
 功能介绍
 ====================
